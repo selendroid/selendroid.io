@@ -1,0 +1,36 @@
+---
+layout: base
+title: Getting started
+author: Dominik Dary
+---
+%h1 Getting started with Selendroid
+.container-fluid
+  .row-fluid
+    .span3
+      #sidebar
+        %ul.nav.nav-tabs.nav-stacked
+          %li
+            %a{:href=>'#systemRequirements'} System Requirements
+          %li
+            %a{:href=>'#getAut'} Getting a test app
+          %li
+            %a{:href=>'#launchingSelendroid'} Launching selendroid
+          %li
+            %a{:href=>'#firstTest'} First Test
+          %li
+            %a{:href=>'#demoProject'} Demo Project
+          %li
+            %a{:href=>'#androidDevices'} Android Devices
+    .span9
+      %p Selendroid is based on the Android instrumentation framework, so only testing one specific app is currently supported. Selendroid can only be used if your application has the permission:
+      %code
+        &lt;uses-permission android:name="android.**permission.INTERNET"/&gt;
+      %p Like the Selenium project, we offer as well jar (selendroid-standalone), that contains all the dependencies
+      %section#systemRequirements
+        %h2 System Requirements
+      %section#getAut
+        %h2 Getting a test app
+      %section#launchingSelendroid
+      %section#firstTest
+      %section#demoProject
+      %section#androidDevices
