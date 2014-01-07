@@ -55,9 +55,12 @@ author: Dominik Dary
         %dt partial link text
         %dd Finds the element by partial text.
         %dt class
-        %dd Find the element by full class name (e.g. android.widget.Button).
+        %dd Finds the element by full class name (e.g. android.widget.Button).
         %dt xpath
-        %dd Find the element by a xpath expression.
+        %dd Finds the element by a xpath expression.
+        %dt tag name
+        %dd Finds the element by tag name.
+
       %h2#findElements Native locator examples
       %p Sample app view hierarchy in the inspector:
       %img{:src=>"images/uiHierarchy.png"}
@@ -138,8 +141,9 @@ author: Dominik Dary
       %pre
         %code.java
           driver.findElement(By.xpath("//Button[@id='buttonTest']"));
+
       %h2#elementInteractions Supported Element Interactions
-      %ol
+      %ul
         %li Get Text
         %li Click
         %li Send Keys
@@ -159,8 +163,10 @@ author: Dominik Dary
       %h4 Java:
       %pre
         %code.java
-          // When using SelendroidDriver
-          driver.getKeyboard().sendKeys(SelendroidKeys.MENU);
+          = preserve do
+            :escaped
+              /* When using SelendroidDriver */
+              driver.getKeyboard().sendKeys(SelendroidKeys.MENU);
       %h3 Overview about available keys
       %p The original list is documented in the interface: <a href="https://github.com/selendroid/selendroid/blob/master/selendroid-client/src/main/java/io/selendroid/SelendroidKeys.java">SelendroidKeys</a>
       %dl.dl-horizontal
