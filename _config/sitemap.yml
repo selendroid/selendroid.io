@@ -1,7 +1,6 @@
 ---
 excluded_files: ['/webview.html','/CNAME',/fonts/]
-pages:
-  -
-    url: /*.html
-    change_frequency: weekly
-    priority: 1
+domain: selendroid.io
+limit: 5000
+priority: 1
+change_frequency: weekly
