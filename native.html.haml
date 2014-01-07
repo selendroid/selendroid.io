@@ -1,0 +1,198 @@
+---
+layout: base
+title: Testing native apps
+author: Dominik Dary
+---
+.container-fluid
+  .row-fluid
+    .span3
+      #sidebar
+        %ul.nav.nav-tabs.nav-stacked
+          %li
+            %a{:href=>'#switchContext'} Switching to native context
+          %li
+            %a{:href=>'#findElements'} Finding Elements
+          %li
+            %a{:href=>'#id'} by Id
+          %li
+            %a{:href=>'#name'} by Name
+          %li
+            %a{:href=>'#linkText'} by Link Text
+          %li
+            %a{:href=>'#partialLinkText'} by partial Link Text
+          %li
+            %a{:href=>'#clazz'} by Class
+          %li
+            %a{:href=>'#tagName'} by Tag Name
+          %li
+            %a{:href=>'#xpath'} by XPath
+          %li
+            %a{:href=>'#elementInteractions'} Interact with Elements
+          %li
+            %a{:href=>'#specialKeys'} Special Keys
+    .span9
+      %h1 Interacting with Native Elements
+      %h2 Demo Video
+      %div.elastic-video <iframe width="420" height="315" src="http://www.youtube.com/embed/074BnGV0mS0" frameborder="0" allowfullscreen></iframe>
+      %h2#switchContext Switch to the <em>native</em> context
+      %h3 Ruby:
+      %pre
+        %code.ruby
+          driver.switch_to.window('NATIVE_APP')
+      %h3 Java:
+      %pre
+        %code.java
+          driver.switchTo().window("NATIVE_APP");
+      %p When a selendroid test session is started, by default the native mode is activated.
+      %h2 Supported Element Locators
+      %dl
+        %dt Id
+        %dd Finds the element by Id.
+        %dt name
+        %dd Finds the element by content description (accessibility label).
+        %dt link text
+        %dd Finds the element by text.
+        %dt partial link text
+        %dd Finds the element by partial text.
+        %dt class
+        %dd Find the element by full class name (e.g. android.widget.Button).
+        %dt xpath
+        %dd Find the element by a xpath expression.
+      %h2#findElements Native locator examples
+      %p Sample app view hierarchy in the inspector:
+      %img{:src=>"images/uiHierarchy.png"}
+
+      %h3#id By Id
+      %p Means the id that is described in the layout xml file of the corresponding activity.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:id,'buttonTest')
+      %h4 Java:
+      %pre
+        %code.Java
+          driver.findElement(By.id("buttonTest"));
+
+      %h3#name By Name
+      %p Is mapped to the accessibility label (content description) of the view element.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:name,'buttonTestCD')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.name("buttonTestCD"));
+
+      %h3#linkText By Link text
+      %p Mapped to the displayed text of the element.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:link_text,'EN Button')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.linkText("EN Button"));
+
+      %h3#partialLinkText By Partial Link Text
+      %p Mapped to the displayed text of the element.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:partial_link_text,'EN Butto')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.partialLinkText("EN Butto"));
+
+      %h3.clazz By Class
+      %p Mapped to the ui element class of the view.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:class_name,'android.widget.Button')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.className("android.widget.Button"));
+
+      %h3#tagName By Tag Name
+      %p Mapped to the simple name of the ui element class of the view.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:tag_name,'Button')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.tagName("Button"));
+
+      %h3.xpath By XPath
+      %p XPath is the language used for locating nodes in an XML document. XPath extends beyond (as well as supporting) the simple methods of locating by id or name attributes, and opens up all sorts of new possibilities such as locating the third Button on the activity.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:xpath,"//Button[@id='buttonTest']")
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.xpath("//Button[@id='buttonTest']"));
+      %h2#elementInteractions Supported Element Interactions
+      %ol
+        %li Get Text
+        %li Click
+        %li Send Keys
+        %li Get Attribute of Element
+        %li Clear
+        %li Is Selected
+        %li Is Displayed
+        %li Is Enabled
+        %li Get Size
+        %li Get Location
+      %h2#specialKeys Interacting with the App using special keys
+      %p Selendroid offers you to interact with the app using some special keys e.g. like the Android menu button.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.keyboard.send_keys("\uE102")
+      %h4 Java:
+      %pre
+        %code.java
+          // When using SelendroidDriver
+          driver.getKeyboard().sendKeys(SelendroidKeys.MENU);
+      %h3 Overview about available keys
+      %p The original list is documented in the interface: <a href="https://github.com/selendroid/selendroid/blob/master/selendroid-client/src/main/java/io/selendroid/SelendroidKeys.java">SelendroidKeys</a>
+      %dl.dl-horizontal
+        %dt KEY
+        %dd Unicode Character
+        %dt ALT_LEFT
+        %dd \uE00A
+        %dt DEL
+        %dd \uE017
+        %dt DPAD_DOWN
+        %dd \uE017
+        %dt DPAD_LEFT
+        %dd \uE012
+        %dt DPAD_RIGHT
+        %dd \uE014
+        %dt DPAD_UP
+        %dd \uE013
+        %dt ENTER
+        %dd \uE007
+        %dt SHIFT_LEFT
+        %dd \uE008
+        %dt BACK
+        %dd \uE100
+        %dt ANDROID_HOME
+        %dd \uE101
+        %dt MENU
+        %dd \uE102
+        %dt SEARCH
+        %dd \uE103
+        %dt SYM
+        %dd \uE104
+        %dt ALT_RIGHT
+        %dd \uE105
+        %dt SHIFT_RIGHT
+        %dd \uE106
