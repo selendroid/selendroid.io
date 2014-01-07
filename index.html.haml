@@ -49,17 +49,17 @@ author: Dominik Dary
 
 .row
   .span12
-    %h2 Downloads #{site.title} Version #{site.current_version}
+    %h2 #{site.title} Version #{site.current_version} Downloads
     .row
       .span4
         %p All artifacts are available in Maven central:
-        %a.btn{ :href=>"#{site.selendroid_maven_search_link}", :target=>"external"} Search &raquo;
+        %a.btn.btn-primary.btn-large{ :href=>"#{site.selendroid_maven_search_link}", :target=>"external"} Search &raquo;
       .span4
         %p Selendroid Standalone with dependencies:
-        %a.btn{ :href=>"#{site.standalone_download_link}" } Download Jar &raquo;
+        %a.btn.btn-primary.btn-large{ :href=>"#{site.standalone_download_link}" } Download Jar &raquo;
       .span4
         %p Selendroid Test App (for playing with the tool):
-        %a.btn{ :href=>"#{site.selendroid_test_app_download_link}" } Download apk &raquo;
+        %a.btn.btn-primary.btn-large{ :href=>"#{site.selendroid_test_app_download_link}" } Download apk &raquo;
 
 
 .row
