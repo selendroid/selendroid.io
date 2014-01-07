@@ -1,0 +1,49 @@
+---
+layout: base
+title: Mobile Web
+author: Dominik Dary
+---
+.container-fluid
+  .row-fluid
+    .span3
+      #sidebar
+        %ul.nav.nav-tabs.nav-stacked
+          %li
+            %a{:href=>'#gettingStarted'} Getting Started
+          %li
+            %a{:href=>'#java'} Java
+          %li
+            %a{:href=>'#ruby'} Ruby
+          %li
+            %a{:href=>'#python'} Python
+    .span9
+      %h1#gettingStarted Getting Started testing the mobile Web (AndroidDriver)
+      %p Make sure you've got the basic <a href="#{site.setup_page}#systemRequirements">System Requrirements</a> setup</p>
+      %p Run the selendroid-standalone server (in this example changing the default port from <code>5555</code> to <code>4444</code>)</p>
+      %pre
+        %code.bash
+          java -jar selendroid-standalone-#{site.current_version}-with-dependencies.jar -port 4444
+
+      %p Start your driver using Selenium's "Android" Desired Capability:
+      %h3#java Java:
+      %pre
+        %code.java
+          = preserve do
+            :escaped
+              WebDriver driver = new RemoteWebDriver(DesiredCapabilities.android());
+              driver.get("http://google.com");
+      %p A full sample about how to test the mobile web in Java you find <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/java/io/selendroid/demo/mobileweb/MobileWebTest.java">here</a>.
+      %h3#ruby Ruby:
+      %pre
+        %code.ruby
+          = preserve do
+            :escaped
+              driver = Selenium::WebDriver.for :remote, :desired_capabilities => :android
+              driver.get "http://google.com"
+      %h3#python Python:
+      %pre
+        %code.python
+          = preserve do
+            :escaped
+              driver  = webdriver.Remote(desired_capabilities=webdriver.DesiredCapabilities.ANDROID)
+              driver.get("http://google.com")
