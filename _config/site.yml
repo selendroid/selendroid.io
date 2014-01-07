@@ -2,8 +2,10 @@ title: Selendroid
 org: ebay Software Fondation
 encoding: UTF-8
 current_version: 0.7.0
+latest_selenium_version: 2.38.0
 selendroid_maven_search_link: http://search.maven.org/#search|ga|1|selendroid
 standalone_download_link: https://github.com/selendroid/selendroid/releases/download/0.7.0/selendroid-standalone-0.7.0-with-dependencies.jar
+selendroid_grid_plugin_download_link: http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-grid-plugin/0.7.0/selendroid-grid-plugin-0.7.0.jar
 selendroid_test_app_download_link: http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-test-app/0.7.0/selendroid-test-app-0.7.0.apk
 source_repo: https://github.com/selendroid/selendroid
 irc_channel: selendroid
@@ -16,6 +18,7 @@ native_apps_page: native.html
 hybrid_apps_page: hybrid.html
 inspector_page: inspector.html
 scale_page: scale.html
+gestures_page: gestures.html
 faq_page: faq.html
 architecture_page: architecture.html
 
