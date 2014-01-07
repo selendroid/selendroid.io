@@ -1,0 +1,44 @@
+---
+layout: base
+title: Frequently Asked Questions (faq)
+author: Dominik Dary
+---
+.container-fluid
+  .row-fluid
+    .span3
+      #sidebar
+        %ul.nav.nav-tabs.nav-stacked
+          %li
+            %a{:href=>"#q-does-selendroid-require-to-modify-your-app"} Does selendroid require to modify your app?
+          %li
+            %a{:href=>'#q-can-only-the-app-itself-be-automated'} Can only the app itself be automated?
+          %li
+            %a{:href=>'#q-can-selendroid-automate-hybrid-apps-web-views'} Can selendroid automate hybrid apps (web views)?
+          %li
+            %a{:href=>'#q-does-selendroid-creates-and-starts-automatically-emulators-for-you'} Does selendroid creates and starts automatically emulators for you?
+          %li
+            %a{:href=>'#q-how-do-you-test-that-actually-selendroid-works-fine'} How do you test that actually selendroid works fine?
+          %li
+            %a{:href=>'#q-how-can-i-chat-with-the-developers'} How can I chat with the developers?
+          %li
+            %a{:href=>'#q-how-can-i-get-the-html-source-of-the-webview'} How can I get the HTML source of the webview?
+          %li
+            %a{:href=>'#q-what-is-the-architecture-of-selenium'} What is the architecture of Selenium
+    .span9
+      %h1 Frequently Asked Questions
+      %h3#q-does-selendroid-require-to-modify-your-app Q: Does selendroid require to modify your app?
+      %p A: No, the app that you would like to automate must not be modified.
+      %h3#q-can-only-the-app-itself-be-automated Q: Can only the app itself be automated?
+      %p A: Yes, only the app itself can be automated becasue selendroid depends on the Android instrumentation framework.
+      %h3#q-can-selendroid-automate-hybrid-apps-web-views Q: Can selendroid automate hybrid apps (web views)?
+      %p A: Yes, selendroid can automate native and hybrid apps.
+      %h3#q-does-selendroid-creates-and-starts-automatically-emulators-for-you Q: Does selendroid creates and starts automatically emulators for you?
+      %p A: Yes, when using you use selendroid-standalone then existing emulators are started automatically if the desired capabilities are matching to one of the existing Emulators.
+      %h3#q-how-do-you-test-that-actually-selendroid-works-fine Q: How do you test that actually selendroid works fine?
+      %p >A: We are maintaining a special test app with a bunch of automated tests. Those tests are executed before we release and also every time a commit is done. We use Jenkins as a continuous integration server: <a href="http://ci.selendroid.io">ci.selendroid.io</a>.
+      %h3#q-how-can-i-chat-with-the-developers Q: How can I chat with the developers?
+      %p A: Come and join us on IRC: #selendroid on freenode.net
+      %h3#q-how-can-i-get-the-html-source-of-the-webview Q: How can I get the HTML source of the webview?
+      %p Selendroid's inspector is able to display the HTML source of the web view. The other option is to use selendroid's build in mechanism to get the page source via <code>driver.getPageSource()</code>.
+      %h3#q-what-is-the-architecture-of-selenium Q: What is the architecture of Selenium?
+      %p A: A very good article about all the architecture details of the selenium project can be found <a href="http://www.aosabook.org/en/selenium.html">here</a>.
