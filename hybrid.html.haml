@@ -1,0 +1,205 @@
+---
+layout: base
+title: Testing hybrid app
+author: Dominik Dary
+---
+.container-fluid
+  .row-fluid
+    .span3
+      #sidebar
+        %ul.nav.nav-tabs.nav-stacked
+          %li
+            %a{:href=>'#switchContext'} Switching to web context
+          %li
+            %a{:href=>'#findElements'} Finding Elements
+          %li
+            %a{:href=>'#id'} by Id
+          %li
+            %a{:href=>'#name'} by Name
+          %li
+            %a{:href=>'#linkText'} by Link Text
+          %li
+            %a{:href=>'#partialLinkText'} by partial Link Text
+          %li
+            %a{:href=>'#clazz'} by Class
+          %li
+            %a{:href=>'#tagName'} by Tag Name
+          %li
+            %a{:href=>'#xpath'} by XPath
+          %li
+            %a{:href=>'#css'} by Css
+          %li
+            %a{:href=>'#elementInteractions'} Interact with Elements
+    .span9
+      %h1 Hybrid/Web Elements
+      %h2 Demo Video
+      %div.elastic-video <iframe width="420" height="315" src="http://www.youtube.com/embed/FGsKI6esKpw" frameborder="0" allowfullscreen></iframe>
+      %h2#switchContext Switch to a <em>web view</em> context
+      %h3 Ruby:
+      %pre
+        %code.ruby
+          driver.switch_to.window('WEBVIEW')
+      %h3 Java:
+      %pre
+        %code.java
+          driver.switchTo().window("WEBVIEW");
+      %p If multiple web views are displayed, the command <em>get window handles</em> is then returning the names of the different web views.
+
+      %h2 Supported Element Locators
+      %dl
+        %dt Id
+        %dd Finds the element by Id.
+        %dt name
+        %dd Finds the element by content description (accessibility label).
+        %dt link text
+        %dd Finds the element by text.
+        %dt partial link text
+        %dd Finds the element by partial text.
+        %dt class
+        %dd Finds the element by full class name (e.g. android.widget.Button).
+        %dt xpath
+        %dd Finds the element by a xpath expression.
+        %dt tag name
+        %dd Finds the element by tag name.
+        %dt css
+        %dd Finds the element by a css locator.
+
+        %h2#findElements Web locator examples
+        %p Based on a sample html (<a href="http://www.ibm.com/developerworks/library/wa-selenium2/index.html">Source</a> ), the locators can be used in the following way:
+        %pre
+          %code.java
+            = preserve do
+              :escaped
+                <html>
+                <head><title>sample page</title></head>
+                <body class="logged_out env-production">
+                <div id="main">
+                    <div id="header" class="true">
+                        ...
+                        <div class="topsearch">
+                            <ul class="nav logged_out">
+                                <li class="pricing">
+                                    <a href="https://github.com/plans">Signup and Pricing</a>
+                                </li>
+                                <li class="explore">
+                                    <a href="https://github.com/explore">Explore GitHub</a>
+                                </li>
+                                <li class="features">
+                                    <a href="https://github.com/features">Features</a>
+                                </li>
+                                <li class="blog">
+                                    <a href="https://github.com/blog">Blog</a>
+                                </li>
+                                <li class="login">
+                                    <a href="https://github.com/login">Login</a>
+                                </li>
+                            </ul>
+                        </div>
+                        ...
+                    </div>
+                    ...
+                </div>
+                ...
+                </body>
+                </html>
+        %p
+        %h3#id By Id
+        %p Means the id of an element that is described in the html source of the web page.
+        %h4 Ruby:
+        %pre
+          %code.ruby
+            driver.find_element(:id,'header')
+        %h4 Java:
+        %pre
+          %code.Java
+            driver.findElement(By.id("header"));
+
+      %h3#name By Name
+      %p Is mapped to the name of the view element.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:name,'name')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.name("name"));
+
+      %h3#linkText By Link text
+      %p Mapped to the displayed text of the element.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:link_text,'Blog')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.linkText("Blog"));
+
+      %h3#partialLinkText By Partial Link Text
+      %p Mapped to the displayed text of the element.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:partial_link_text,'Blo')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.partialLinkText("Blo"));
+
+      %h3.clazz By Class
+      %p Mapped to the ui element class of the view.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:class_name,'login')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.className("login"));
+
+      %h3#tagName By Tag Name
+      %p Mapped to the name of the ui element tag e.g.: <em>a</em>.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:tag_name,'a')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.tagName("a"));
+
+      %h3.xpath By XPath
+      %p XPath is the language used for locating nodes in an XML document. XPath extends beyond (as well as supporting) the simple methods of locating by id or name attributes, and opens up all sorts of new possibilities such as locating the third Button on the activity.
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:xpath,'//a[@title='logo']')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.xpath("//a[@title='logo']"));
+
+      %h3#css By Css
+      %h4 Ruby:
+      %pre
+        %code.ruby
+          driver.find_element(:css,'ul.nav li')
+      %h4 Java:
+      %pre
+        %code.java
+          driver.findElement(By.cssSelector("ul.nav li"));
+
+      %h2#elementInteractions Supported Element Interactions
+      %ul
+        %li Get Text
+        %li Click
+        %li Send Keys
+        %li Get Attribute of Element
+        %li Clear
+        %li Submit
+        %li Is Selected
+        %li Is Displayed
+        %li Is Enabled
+        %li Get Size
+        %li Get Location
