@@ -1,0 +1,7 @@
+---
+excluded_files: ['/webview.html','/CNAME',/fonts/]
+pages:
+  -
+    url: /*.html
+    change_frequency: weekly
+    priority: 1
