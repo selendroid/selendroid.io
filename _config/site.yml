@@ -28,12 +28,8 @@ profiles:
   development:
     deploy: nil # force development as the default
   production:
-    base_url: 'http://selendroid.io'
+    base_url: http://selendroid.github.io/selendroid.io/
     google_analytics: UA-1537443-9
-    disqus: selendroid
-    resolve_published_artifacts: true
     minify: true
     deploy:
       host: github_pages
-      branch: gh-pages
-      repository: upstream
