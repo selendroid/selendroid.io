@@ -1,0 +1,40 @@
+---
+layout: base
+title: Inspector
+author: Dominik Dary
+---
+.container-fluid
+  .row-fluid
+    .span3
+      #sidebar
+        %ul.nav.nav-tabs.nav-stacked
+          %li
+            %a{:href=>'#gettingStarted'} Getting Started
+          %li
+            %a{:href=>'#features'} Features
+          %li
+            %a{:href=>'#webviewSourceCode'} Web View Source Code
+          %li
+            %a{:href=>'#recorder'} Test Case Recorder
+    .span9
+      %h1#gettingStarted Selendroid Inspector
+      %p Selendroid comes with a useful little tool called Selendroid Inspector. It’s a little web app which is embedded inside your selendroid test server. Its purpose is to let you inspect the current state of your app’s UI.</p>
+      %p <img src="images/selendroidInspector.gif">
+      %h2#features Features
+      %ol
+        %li View hierarchy
+        %li View UI element properties
+        %li UI screenshot with view locator
+        %li Record the click actions
+        %li Display the source html of a web view
+        %li XPath helper
+
+      %h3 Where do I get it?
+      %p When you have started selendroid-standalone and you have started a test session, you can find the web app at: <a href="http://localhost:5555/inspector">http://localhost:5555/inspector</a>
+      %h2#webviewSourceCode Web View Source Code
+      %p For displaying the html source code of a web view please follow these steps:
+      %ul
+        %li Select in the UI hierarchy the webview you want to inspect and press the <code>ctrl</code> key (this keeps the selection of the element).
+        %li select the tab <em>Html Source</em>
+      %h2#recorder Test Case Recorder
+      %p Selendroid Inspector has a simple build in test case recorder that tries to identify the element that is clicked (on the screenshot) and saves the locator and click command into the <em>Java</em> tab.
