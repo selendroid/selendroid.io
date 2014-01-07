@@ -1,0 +1,49 @@
+---
+layout: base
+title: Mobile Web
+author: Dominik Dary
+---
+.container-fluid
+  .row-fluid
+    .span3
+      #sidebar
+        %ul.nav.nav-tabs.nav-stacked
+          %li
+            %a{:href=>'#elementInteractions'} Supported Interactions
+          %li
+            %a{:href=>'#ruby'} Ruby Example
+          %li
+            %a{:href=>'#java'} Java Example
+    .span9
+      %h1 Mobile Gestures
+      %p Selendroid is implementing the <a href="http://code.google.com/p/selenium/wiki/AdvancedUserInteractions">Advanced User Interactions API</a>. This is a new, more comprehensive API for describing actions a user can perform on an app. This includes actions such as drag and drop or clicking multiple elements while holding down the Control key.
+      %h2#elementInteractions Supported Interactions
+      %ul
+        %li <code>doubleTap(WebElement onElement)</code>
+        %li <code>down(int x, int y)</code>
+        %li <code>flick(int xSpeed, int ySpeed)</code>
+        %li <code>flick(WebElement onElement, int xOffset, int yOffset, int speed)</code>
+        %li <code>longPress(WebElement onElement)</code>
+        %li <code>move(int x, int y)</code>
+        %li <code>singleTap(WebElement onElement)</code>
+        %li <code>up(int x, int y)</code>
+      %h2 Examples
+      %p How to swipe from right to left
+      %h3#ruby Ruby:
+      %pre
+        %code.ruby
+          = preserve do
+            :escaped
+              #Please include the touch screen:
+              #include Selenium::WebDriver::DriverExtensions::HasTouchScreen
+              pages = driver.find_element(:id,'vp_pages')
+              driver.touch.flick(pages,-100,0,:normal).perform
+      %h3#java Java:
+      %pre
+        %code.java
+          = preserve do
+            :escaped
+              #Please import: org.openqa.selenium.interactions.touch.TouchActions
+              WebElement pages = driver.findElement(By.id("vp_pages"));
+              TouchActions flick = new TouchActions(driver).flick(pages, -100, 0, 0);
+              flick.perform();
