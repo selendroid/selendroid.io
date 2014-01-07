@@ -62,13 +62,19 @@
     %footer
       %ul.breadcrumb
         %li
-          &copy; 2012 - #{Date.today.year} #{site.org}
+          &copy; 2012 - #{Date.today.year}
+          %a{ :href=>"#{site.ebay_software_foundation_page}" } #{site.org}
           |
         %li
           Maintained by
           %i.icon-user
-          <a href="https://github.com/selendroid/selendroid/blob/master/AUTHORS">Selendroid Authors</a>
-
+          %a{ :href=>"#{site.contributors}" } Selendroid Authors
+          |
+        %li
+          %a{ :href=>"#{site.mailing_list}" } Mailing List
+          |
+        %li
+          %a{ :href=>"#{site.issue_tracker}" } Issue Tracker
     = google_analytics
     %script
       hljs.initHighlightingOnLoad();
