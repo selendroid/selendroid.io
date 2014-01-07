@@ -16,10 +16,10 @@
     - if site.url
       %link(rel='canonical'){:href=>site.url}
     %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"./stylesheets/styles.css" }
-    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"http://yandex.st/highlightjs/7.3/styles/default.min.css" }
+    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"./stylesheets/highlight-7.5.min.css" }
     %script{ :type=>'text/javascript', :src=>'//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js' }
     %script{ :type=>'text/javascript', :src=>'./javascripts/bootstrap-2.3.1.js' }
-    %script{ :type=>'text/javascript', :src=>'./javascripts/highlight-20130326.js' }
+    %script{ :type=>'text/javascript', :src=>'./javascripts/highlight-7.5.min.js' }
     /[if lt IE 9]
       %script{ :type=>'text/javascript', :src=>'//html5shim.googlecode.com/svn/trunk/html5.js' }
   %body
@@ -57,14 +57,16 @@
 
     .container
       ~ content
-  %footer
-    %ul.breadcrumb
-      %li
-        &copy; 2012 - #{Date.today.year} #{site.org}
-        |
-      %li
-        Maintained by
-        %i.icon-user
-        <a href="https://github.com/selendroid/selendroid/blob/master/AUTHORS">Selendroid authors</a> 
+    %footer
+      %ul.breadcrumb
+        %li
+          &copy; 2012 - #{Date.today.year} #{site.org}
+          |
+        %li
+          Maintained by
+          %i.icon-user
+          <a href="https://github.com/selendroid/selendroid/blob/master/AUTHORS">Selendroid Authors</a>
 
     = google_analytics
+    %script
+      hljs.initHighlightingOnLoad();

@@ -3,4 +3,7 @@ _tmp
 .sass-cache
 .awestruct
 vendor
+.idea/
+*.iml
+*.log
 .bundle
