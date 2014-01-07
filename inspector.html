@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>
-      Selendroid: Selenium for Android
+      Selendroid: Inspector
     </title>
     <style>
       body {
@@ -72,86 +72,49 @@
       </div>
     </div>
     <div class="container">
-      <div class="hero-unit">
-        <h1>Selendroid</h1>
-        <p>"Selenium for Android": Test automate native or hybrid Android apps and the mobile web with Selendroid.</p>
-        <p>
-          <a class="btn btn-primary btn-large" href="setup.html">
-            <i class="icon-info-sign icon-white"></i>
-            Getting Started &raquo;
-          </a>
-        </p>
-      </div>
-      <div class="row">
-        <div class="span4">
-          <h2>About</h2>
-          <p>Selendroid is a test automation framework which drives of the UI of Android native and hybrid applications (apps) and the mobile web. Tests are written using the Selenium 2 client API.</p>
-        </div>
-        <div class="span4">
-          <h2>Devices</h2>
-          <p>Selendroid can be used on emulators and real devices and can be integrated as a node into the Selenium Grid for scaling and parallel testing.</p>
-        </div>
-        <div class="span4">
-          <h2>Concept</h2>
-          <p>The documentation specifies how to install and use Selendroid itself. The use of Selendroid requires knowledge about how to use Selenium. The official documentation of the WebDriver client API can be found <a href="http://docs.seleniumhq.org/docs/03_webdriver.jsp">here</a>.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span12">
-          <h2>Features of Selendroid</h2>
-          <ul>
-            <li>
-              The app under test must not be modified in order to automate it
-            </li>
-            <li>
-              Testing the mobile web using build in <a href="mobileWeb.html">Android driver webview app</a>
-            </li>
-            <li>
-              Between the native and the web context can be switched back and forth, which basically means the concept of automating native or hybrid apps are the same
-            </li>
-            <li>
-              Different locator types are supported to find elements
-            </li>
-            <li>
-              Gestures are supported: <a href="gestures.html">Advanced User Interactions API</a>
-            </li>
-            <li>
-              Selendroid can interact with multiple Android devices (emulators or hardware devices) at the same time
-            </li>
-            <li>
-              Existing Emulators are started automatically
-            </li>
-            <li>
-              Selendroid supports hot plugging of hardware devices
-            </li>
-            <li>
-              It can be integrated as a node into the Selenium Grid for scaling and <a href="scale.html"> parallel testing</a>
-            </li>
-            <li>
-              Multiple Android target API support (10 to 19)
-            </li>
-            <li>
-              Build in <a href="inspector.html">Inspector</a> to simplify test case development.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span12">
-          <h2>Selendroid Version 0.7.0 Downloads</h2>
-          <div class="row">
-            <div class="span4">
-              <p>All artifacts are available in Maven central:</p>
-              <a class="btn btn-primary btn-large" href="http://search.maven.org/#search|ga|1|selendroid" target="external">Search &raquo;</a>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span3">
+            <div id="sidebar">
+              <ul class="nav nav-tabs nav-stacked">
+                <li>
+                  <a href="#gettingStarted">Getting Started</a>
+                </li>
+                <li>
+                  <a href="#features">Features</a>
+                </li>
+                <li>
+                  <a href="#webviewSourceCode">Web View Source Code</a>
+                </li>
+                <li>
+                  <a href="#recorder">Test Case Recorder</a>
+                </li>
+              </ul>
             </div>
-            <div class="span4">
-              <p>Selendroid Standalone with dependencies:</p>
-              <a class="btn btn-primary btn-large" href="https://github.com/selendroid/selendroid/releases/download/0.7.0/selendroid-standalone-0.7.0-with-dependencies.jar">Download Jar &raquo;</a>
-            </div>
-            <div class="span4">
-              <p>Selendroid Test App (for playing with the tool):</p>
-              <a class="btn btn-primary btn-large" href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-test-app/0.7.0/selendroid-test-app-0.7.0.apk">Download apk &raquo;</a>
-            </div>
+          </div>
+          <div class="span9">
+            <h1 id="gettingStarted">Selendroid Inspector</h1>
+            <p>Selendroid comes with a useful little tool called Selendroid Inspector. It’s a little web app which is embedded inside your selendroid test server. Its purpose is to let you inspect the current state of your app’s UI.</p></p>
+            <p><img src="images/selendroidInspector.gif"></p>
+            <h2 id="features">Features</h2>
+            <ol>
+              <li>View hierarchy</li>
+              <li>View UI element properties</li>
+              <li>UI screenshot with view locator</li>
+              <li>Record the click actions</li>
+              <li>Display the source html of a web view</li>
+              <li>XPath helper</li>
+            </ol>
+            <h3>Where do I get it?</h3>
+            <p>When you have started selendroid-standalone and you have started a test session, you can find the web app at: <a href="http://localhost:5555/inspector">http://localhost:5555/inspector</a></p>
+            <h2 id="webviewSourceCode">Web View Source Code</h2>
+            <p>For displaying the html source code of a web view please follow these steps:</p>
+            <ul>
+              <li>Select in the UI hierarchy the webview you want to inspect and press the <code>ctrl</code> key (this keeps the selection of the element).</li>
+              <li>select the tab <em>Html Source</em></li>
+            </ul>
+            <h2 id="recorder">Test Case Recorder</h2>
+            <p>Selendroid Inspector has a simple build in test case recorder that tries to identify the element that is clicked (on the screenshot) and saves the locator and click command into the <em>Java</em> tab.</p>
           </div>
         </div>
       </div>

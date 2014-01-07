@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>
-      Selendroid: Selenium for Android
+      Selendroid: Mobile Gestures
     </title>
     <style>
       body {
@@ -72,86 +72,43 @@
       </div>
     </div>
     <div class="container">
-      <div class="hero-unit">
-        <h1>Selendroid</h1>
-        <p>"Selenium for Android": Test automate native or hybrid Android apps and the mobile web with Selendroid.</p>
-        <p>
-          <a class="btn btn-primary btn-large" href="setup.html">
-            <i class="icon-info-sign icon-white"></i>
-            Getting Started &raquo;
-          </a>
-        </p>
-      </div>
-      <div class="row">
-        <div class="span4">
-          <h2>About</h2>
-          <p>Selendroid is a test automation framework which drives of the UI of Android native and hybrid applications (apps) and the mobile web. Tests are written using the Selenium 2 client API.</p>
-        </div>
-        <div class="span4">
-          <h2>Devices</h2>
-          <p>Selendroid can be used on emulators and real devices and can be integrated as a node into the Selenium Grid for scaling and parallel testing.</p>
-        </div>
-        <div class="span4">
-          <h2>Concept</h2>
-          <p>The documentation specifies how to install and use Selendroid itself. The use of Selendroid requires knowledge about how to use Selenium. The official documentation of the WebDriver client API can be found <a href="http://docs.seleniumhq.org/docs/03_webdriver.jsp">here</a>.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span12">
-          <h2>Features of Selendroid</h2>
-          <ul>
-            <li>
-              The app under test must not be modified in order to automate it
-            </li>
-            <li>
-              Testing the mobile web using build in <a href="mobileWeb.html">Android driver webview app</a>
-            </li>
-            <li>
-              Between the native and the web context can be switched back and forth, which basically means the concept of automating native or hybrid apps are the same
-            </li>
-            <li>
-              Different locator types are supported to find elements
-            </li>
-            <li>
-              Gestures are supported: <a href="gestures.html">Advanced User Interactions API</a>
-            </li>
-            <li>
-              Selendroid can interact with multiple Android devices (emulators or hardware devices) at the same time
-            </li>
-            <li>
-              Existing Emulators are started automatically
-            </li>
-            <li>
-              Selendroid supports hot plugging of hardware devices
-            </li>
-            <li>
-              It can be integrated as a node into the Selenium Grid for scaling and <a href="scale.html"> parallel testing</a>
-            </li>
-            <li>
-              Multiple Android target API support (10 to 19)
-            </li>
-            <li>
-              Build in <a href="inspector.html">Inspector</a> to simplify test case development.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span12">
-          <h2>Selendroid Version 0.7.0 Downloads</h2>
-          <div class="row">
-            <div class="span4">
-              <p>All artifacts are available in Maven central:</p>
-              <a class="btn btn-primary btn-large" href="http://search.maven.org/#search|ga|1|selendroid" target="external">Search &raquo;</a>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span3">
+            <div id="sidebar">
+              <ul class="nav nav-tabs nav-stacked">
+                <li>
+                  <a href="#elementInteractions">Supported Interactions</a>
+                </li>
+                <li>
+                  <a href="#ruby">Ruby Example</a>
+                </li>
+                <li>
+                  <a href="#java">Java Example</a>
+                </li>
+              </ul>
             </div>
-            <div class="span4">
-              <p>Selendroid Standalone with dependencies:</p>
-              <a class="btn btn-primary btn-large" href="https://github.com/selendroid/selendroid/releases/download/0.7.0/selendroid-standalone-0.7.0-with-dependencies.jar">Download Jar &raquo;</a>
-            </div>
-            <div class="span4">
-              <p>Selendroid Test App (for playing with the tool):</p>
-              <a class="btn btn-primary btn-large" href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-test-app/0.7.0/selendroid-test-app-0.7.0.apk">Download apk &raquo;</a>
-            </div>
+          </div>
+          <div class="span9">
+            <h1>Mobile Gestures</h1>
+            <p>Selendroid is implementing the <a href="http://code.google.com/p/selenium/wiki/AdvancedUserInteractions">Advanced User Interactions API</a>. This is a new, more comprehensive API for describing actions a user can perform on an app. This includes actions such as drag and drop or clicking multiple elements while holding down the Control key.</p>
+            <h2 id="elementInteractions">Supported Interactions</h2>
+            <ul>
+              <li><code>doubleTap(WebElement onElement)</code></li>
+              <li><code>down(int x, int y)</code></li>
+              <li><code>flick(int xSpeed, int ySpeed)</code></li>
+              <li><code>flick(WebElement onElement, int xOffset, int yOffset, int speed)</code></li>
+              <li><code>longPress(WebElement onElement)</code></li>
+              <li><code>move(int x, int y)</code></li>
+              <li><code>singleTap(WebElement onElement)</code></li>
+              <li><code>up(int x, int y)</code></li>
+            </ul>
+            <h2>Examples</h2>
+            <p>How to swipe from right to left</p>
+            <h3 id="ruby">Ruby:</h3>
+            <pre><code class="ruby">#Please include the touch screen:&#x000A;#include Selenium::WebDriver::DriverExtensions::HasTouchScreen&#x000A;pages = driver.find_element(:id,'vp_pages')&#x000A;driver.touch.flick(pages,-100,0,:normal).perform</code></pre>
+            <h3 id="java">Java:</h3>
+            <pre><code class="java">#Please import: org.openqa.selenium.interactions.touch.TouchActions&#x000A;WebElement pages = driver.findElement(By.id(&quot;vp_pages&quot;));&#x000A;TouchActions flick = new TouchActions(driver).flick(pages, -100, 0, 0);&#x000A;flick.perform();</code></pre>
           </div>
         </div>
       </div>
