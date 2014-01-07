@@ -39,7 +39,7 @@ GEM
     ffi (1.9.3)
     fssm (0.2.10)
     git (1.2.6)
-    haml (4.0.4)
+    haml (4.0.5)
       tilt
     htmlcompressor (0.0.7)
       yui-compressor (~> 0.9.6)
