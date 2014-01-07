@@ -84,9 +84,4 @@
     <priority>0.1</priority>
     <changefreq>never</changefreq>
   </url>
-  <url>
-    <loc>http://localhost:4242/*.html</loc>
-    <priority>1</priority>
-    <changefreq>weekly</changefreq>
-  </url>
 </urlset>
