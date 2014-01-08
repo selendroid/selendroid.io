@@ -1,87 +1,58 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>http://localhost:4242/architecture/</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/faq/</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/fonts/bootstrap/glyphicons-halflings-regular.eot</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/fonts/bootstrap/glyphicons-halflings-regular.svg</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/fonts/bootstrap/glyphicons-halflings-regular.ttf</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/fonts/bootstrap/glyphicons-halflings-regular.woff</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/gestures/</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/hybrid/</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/inspector/</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/mobileWeb/</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/native/</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/scale/</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://localhost:4242/setup/</loc>
-    <lastmod>2014-01-07</lastmod>
-    <priority>0.1</priority>
-    <changefreq>never</changefreq>
-  </url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>http://selendroid.io/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://selendroid.io/scale.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://selendroid.io/inspector.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://selendroid.io/setup.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>1.0</priority>
+</url>
+<url>
+  <loc>http://selendroid.io/native.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>1.0</priority>
+</url>
+<url>
+  <loc>http://selendroid.io/hybrid.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>1.0</priority>
+</url>
+<url>
+    <loc>http://selendroid.io/mobileWeb.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+</url>
+<url>
+  <loc>http://selendroid.io/gestures.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://selendroid.io/faq.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://selendroid.io/architecture.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
 </urlset>
