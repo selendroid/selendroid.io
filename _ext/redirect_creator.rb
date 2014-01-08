@@ -1,3 +1,4 @@
+# Source: Hibernate.org
 require 'awestruct/handlers/base_handler'
 
 module Awestruct
