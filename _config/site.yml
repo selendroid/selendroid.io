@@ -21,6 +21,7 @@ inspector_page: inspector.html
 scale_page: scale.html
 gestures_page: gestures.html
 faq_page: faq.html
+quick_start_page: quickStart.html
 architecture_page: architecture.html
 
 
