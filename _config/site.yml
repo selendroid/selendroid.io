@@ -24,13 +24,13 @@ faq_page: faq.html
 quick_start_page: quickStart.html
 architecture_page: architecture.html
 
+google_analytics: UA-1537443-9
 
 profiles:
   development:
     deploy: nil # force development as the default
   production:
-    base_url: http://selendroid.github.io/selendroid.io/
-    google_analytics: UA-1537443-9
+    base_url: http://selendroid.io/
     minify: true
     deploy:
       host: github_pages
