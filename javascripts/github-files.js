@@ -1,3 +1,6 @@
+/*
+* Source: https://github.com/jamesward/github-files
+*/
 ;(function ($) {
   var githubCacheFilePath = [];
   var githubCacheSha = [];
