@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>
+      Selendroid: Quick Start
+    </title>
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <meta content="Dominik Dary" name="author">
+    <link href="./stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <link href="./stylesheets/highlight-7.5.min.css" rel="stylesheet" type="text/css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="./javascripts/bootstrap-2.3.1.js" type="text/javascript"></script>
+    <script src="./javascripts/highlight-7.5.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="github-banner">
+            <a href="https://github.com/selendroid/selendroid">
+              <img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" style="position: absolute; top: 0; right: 0; border: 0;z-index: 900;">
+            </a>
+          </div>
+          <a class="brand" href="http://selendroid.io">Selendroid</a>
+          <ul class="nav">
+            <li>
+              <a href="setup.html">Getting Started</a>
+            </li>
+            <li class="dropdown" id="getting-started-menu">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#getting-started-menu">
+                Testing
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="mobileWeb.html">Mobile Web</a>
+                </li>
+                <li>
+                  <a href="native.html">Native Apps</a>
+                </li>
+                <li>
+                  <a href="hybrid.html">Hybrid Apps</a>
+                </li>
+                <li>
+                  <a href="gestures.html">Gestures</a>
+                </li>
+                <li>
+                  <a href="quickStart.html">Quick Start</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="inspector.html">Inspector</a>
+            </li>
+            <li>
+              <a href="scale.html">Scaling</a>
+            </li>
+            <li>
+              <a href="faq.html">FAQ</a>
+            </li>
+            <li>
+              <a href="architecture.html">Architecture</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span3">
+            <div id="sidebar">
+              <ul class="nav nav-tabs nav-stacked">
+                <li>
+                  <a href="#beforeStart">Before you start</a>
+                </li>
+                <li>
+                  <a href="#withMaven">Use Selendroid with Maven</a>
+                </li>
+                <li>
+                  <a href="#nativeAppTest">Native App Test</a>
+                </li>
+                <li>
+                  <a href="#hybridAppTest">Hybrid App Test</a>
+                </li>
+                <li>
+                  <a href="#mobileWebTest">Testing the mobile Web</a>
+                </li>
+                <li>
+                  <a href="#usingOtherClientBindings">Writing Tests in other languages</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="span9">
+            <script src="./javascripts/github-files.js" type="text/javascript"></script>
+            <h1>Quick Start</h1>
+            <p>This page demonstrates about how to get started with the demo project for testing native and hybrid apps and the mobile web. The demo project is located at github: <a href="https://github.com/selendroid/demoproject-selendroid">https://github.com/selendroid/demoproject-selendroid</a></p>
+            <h2 id="beforeStart">Before you start</h2>
+            <p>To get started please <a href="setup.html#systemRequirements">setup first your system</a> and if you want to use an emulator during test, please checkout <a href="setup.html#androidDevices">this section</a>.</p>
+            <h2 id="withMaven">Use Selendroid with Maven</h2>
+            <p>The demo project is based on <a href="http://maven.apache.org/">Apache Maven</a> and uses <a href="http://testng.org/">TestNG</a> to run the tests.</p>
+            <p>Selendroid is available in Maven central can be added in the dependency section of the <code>pom.xml</code>:</p>
+            <pre><code class="xml">&lt;dependency&gt;&#x000A;    &lt;groupId&gt;io.selendroid&lt;/groupId&gt;&#x000A;    &lt;version&gt;0.7.0&lt;/version&gt;&#x000A;    &lt;artifactId&gt;selendroid-standalone&lt;/artifactId&gt;&#x000A;&lt;/dependency&gt;&#x000A;&lt;dependency&gt;&#x000A;    &lt;groupId&gt;io.selendroid&lt;/groupId&gt;&#x000A;    &lt;version&gt;0.7.0&lt;/version&gt;&#x000A;    &lt;artifactId&gt;selendroid-client&lt;/artifactId&gt;&#x000A;&lt;/dependency&gt;</code></pre>
+            <p>Before starting <code>SelendroidDriver</code> it is mandatory to start the <code>SelendroidStandalone</code>-server. This can be done by</p>
+            <ul>
+              <li>using the command line or</li>
+              <li>code in the test case</li>
+            </ul>
+            <h3>Command line start of selendroid-standalone</h3>
+            <p>Go through Selendroid's <a href="setup.html">setup instructions</a> and download the current version. The applications that are we are using in the demo project are located in <a href="https://github.com/selendroid/demoproject-selendroid/tree/master/src/main/resources">this folder</a>.</p>
+            <p>To start the standalone server please open your prefered shell and run:</p>
+            <code>java -jar selendroid-standalone-0.7.0-with-dependencies.jar -aut EmployeeDirectory.apk -aut selendroid-test-app-0.7.0.apk</code>
+            <p>When the server is started you can verify the current configuration <a href="http://localhost:5555/wd/hub/status">http://localhost:5555/wd/hub/status</a>:</p>
+            <pre><code class="json">&quot;supportedApps&quot;:[&#x000A;    {&#x000A;        &quot;appId&quot;:&quot;io.selendroid.directory:0.0.1&quot;,&#x000A;        &quot;mainActivity&quot;:&quot;io.selendroid.directory.EmployeeDirectory&quot;,&#x000A;        &quot;basePackage&quot;:&quot;io.selendroid.directory&quot;},&#x000A;    {&#x000A;        &quot;appId&quot;:&quot;io.selendroid.testapp:0.7.0&quot;,&#x000A;        &quot;mainActivity&quot;:&quot;io.selendroid.testapp.HomeScreenActivity&quot;,&#x000A;        &quot;basePackage&quot;:&quot;io.selendroid.testapp&quot;&#x000A;    }&#x000A;]</code></pre>
+            <h3>Start selendroid-standalone during test</h3>
+            <p>Before the test is executed the selendroid-standalone server will be started:</p>
+            <pre><code class="java">SelendroidConfiguration config = new SelendroidConfiguration();&#x000A;// Add the selendroid-test-app to the standalone server&#x000A;config.addSupportedApp(&quot;src/main/resources/selendroid-test-app-0.7.0.apk&quot;);&#x000A;selendroidServer = new SelendroidLauncher(config);&#x000A;selendroidServer.lauchSelendroid();</code></pre>
+            <p>The test itself you find find [here](https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/java/io/selendroid/demo/SelendroidIntegrationTest.java#L45).</p>
+            <h2>Tests</h2>
+            <p>After the <code>selendroid-standalone</code> has been started, the <code>SelendroidDriver</code> can be initialized:</p>
+            <pre><code class="java">// Create the selendroid capabilities and specify to use an emulator and selendroid's test app&#x000A;SelendroidCapabilities caps = SelendroidCapabilities.emulator(&quot;io.selendroid.testapp:0.7.0&quot;);&#x000A;driver = new SelendroidDriver(&quot;http://localhost:5555/wd/hub&quot;, caps);</code></pre>
+            <p>The capabilities are describing what app is used for testing and in this example the selendroid test app is used.</p>
+            <h2>Simple Tests</h2>
+            <p>For testing the Android app the <a href="http://docs.seleniumhq.org/docs/03_webdriver.jsp">WebDriver API</a> is used. This demonstrates about how a text field can be found and text can be entered.</p>
+            <pre><code class="java">// Find an element by id&#x000A;WebElement inputField = driver.findElement(By.id(&quot;my_text_field&quot;));&#x000A;//enter a text into the text field&#x000A;inputField.sendKeys(&quot;Selendroid&quot;);&#x000A;//check if the text has been entered into the text field&#x000A;Assert.assertEquals(&quot;Selendroid&quot;, inputField.getText());</code></pre>
+            <h2 id="nativeAppTest">Native App Test</h2>
+            <p>Selendroid's <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/resources/selendroid-test-app-0.5.1.apk">test app</a> contains an user registration flow that will be tested in the <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/java/io/selendroid/demo/nativeui/UserRegistrationTest.java">UserRegistrationTest</a>:</p>
+            <pre><code class="java" id="nativeCode"></code></pre>
+            <script>
+              $.getGithubFile("selendroid", "demoproject-selendroid", "0085ebef222210fe9775b9b7af1eae7b0de510cd", function(contents) {$('#nativeCode').html(contents);},14);
+            </script>
+            <p>The test demonstrates how activities can be started and how the interaction with different elements can be done.</p>
+            <h2 id="hybridAppTest">Hybrid App Test</h2>
+            <p>Selendroid can be used to test hybrid applications. The project contains a <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/resources/employee-directory.apk">Cordova sample app</a> and the <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/java/io/selendroid/demo/webui/EmployeeDirectoryTest.java">EmployeeDirectoryTest</a>:</p>
+            <pre><code class="java" id="hybridCode"></code></pre>
+            <script>
+              $.getGithubFile("selendroid", "demoproject-selendroid", "3d7364c95c22f0c82bef7d0f21df4126144d829f", function(contents) {$('#hybridCode').html(contents);},14);
+            </script>
+            <h2 id="mobileWebTest">Testing the mobile Web</h2>
+            <p>Selendroid supports with version 0.7.0 testing the mobile web. The sample project contains a <a href="http://goo.gl/2iLiKj">MobileWebTest</a> example:</p>
+            <pre><code class="java" id="mobileWebCode"></code></pre>
+            <script>
+              $.getGithubFile("selendroid", "demoproject-selendroid", "3ebeea7b711954646ce1d66a256df208ccf332c0", function(contents) {$('#mobileWebCode').html(contents);},14);
+            </script>
+            <h2 id="usingOtherClientBindings">Writing Tests in other languages</h2>
+            <p>Tests can be written in every programming language a Selenium client binding is available. A simple JUnit based python tests you can find <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/python/FindElementTest.py">here</a>:</p>
+            <pre><code class="python" id="pythonSampleCode"></code></pre>
+            <script>
+              $.getGithubFile("selendroid", "demoproject-selendroid", "86fb04958b265b624ddbe43bb27fb2d638274c7e", function(contents) {$('#pythonSampleCode').html(contents);},4);
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <ul class="breadcrumb">
+        <li>
+          &copy; 2012 - 2014
+          <a href="http://ebayopensource.github.io/">ebay Software Fondation</a>
+          |
+        </li>
+        <li>
+          Maintained by
+          <i class="icon-user"></i>
+          <a href="https://github.com/selendroid/selendroid/blob/master/AUTHORS">Selendroid Authors</a>
+          |
+        </li>
+        <li>
+          <a href="http://groups.google.com/group/selendroid">Mailing List</a>
+          |
+        </li>
+        <li>
+          <a href="https://github.com/selendroid/selendroid/issues?direction=desc&amp;sort=updated&amp;state=open">Issue Tracker</a>
+        </li>
+      </ul>
+    </footer>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+    var pageTracker = _gat._getTracker("");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>
