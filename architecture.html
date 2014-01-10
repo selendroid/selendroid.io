@@ -146,13 +146,7 @@
               <li>start the server: <code>adb shell am instrument -e main_activity 'io.selendroid.testapp.HomeScreenActivity' io.selendroid/.ServerInstrumentation</code></li>
               <li>Do the port forwarding: <code>adb forward tcp:8080 tcp:8080</li></code></li>
               <li><code>cd selendroid-test-app</code></li>
-              <li>run the</li>
-              <ul>
-                <li>native tests</li>
-                <li><code>mvn install -DskipTests=false -DtestngGroups=native</code></li>
-                <li>web view tests</li>
-                <li><code>mvn install -DskipTests=false -DtestngGroups=webview</code></li>
-              </ul>
+              <li>run the tests by <code>mvn install -DskipTests=false</code></li>
             </ul>
             <h2 id="ci">CI Infrastructure</h2>
             <p>We use a dedicated jenkins server for building selendroid: <a href="http://ci.selendroid.io">http://ci.selendroid.io</a>.</p>
