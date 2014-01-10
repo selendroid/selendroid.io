@@ -20,28 +20,28 @@ author: Dominik Dary
             %a{:href=>'#androidDevices'} Android Devices
     .span9
       %h1 Getting started with Selendroid
-      %p Selendroid is based on the Android instrumentation framework, so only testing one specific app is currently supported. Selendroid can only be used if your application has the permission:
+      %p Selendroid is based on the Android instrumentation framework, so currently, only the testing of one specific app is supported. Selendroid can only be used if your application has permission:
       %code
         &lt;uses-permission android:name="android.**permission.INTERNET"/&gt;
-      %p Like the Selenium project, we offer as well jar (selendroid-standalone), that contains all the dependencies
+      %p Like the Selenium project, we offer as well a jar (selendroid-standalone), that contains all the dependencies
       %section#systemRequirements 
         %h2 System Requirements
         %ol
           %li Selendroid is tested to run on Mac, Linux and Windows.
           %li Java sdk (minimum 1.6) is installed and JAVA_HOME is configured</li>
           %li Latest <a href="http://developer.android.com/sdk/index.html">Android-Sdk</a> is installed and ANDROID_HOME is set.
-          %li At least one Android virtual device must be existent or an Android hardware device must be plugged in to the computer. For best practices about Android devices please read <a href="#androidDevices">this section</a>.
+          %li At least one Android virtual device must exist or an Android hardware device must be plugged in to the computer. For best practices about Android devices please read <a href="#androidDevices">this section</a>.
       %section#getAut 
         %h2 Getting an application under test
         %p Selendroid can be used to test already built apps. Those Android apps (apk file) must exists on the machine, where the selendroid server will be started. The reason for this is that a customized selendroid-server for the app under test will be created and both apps (selendroid server and AUT) must be signed with the same certificate in order to be able to install the apks on the device.
-        %p When you want to play around with selendroid, you can use our app that we use to verify that actually selendroid works as expected. You can download this app <a href="#{site.selendroid_test_app_download_link}">here</a>
+        %p When you want to play around with selendroid, you can use our <em>selendroid-test-app</em> which we use to verify that actually selendroid works as expected. You can download this app <a href="#{site.selendroid_test_app_download_link}">here</a>
       %section#launchingSelendroid
         %h2 Launching Selendroid
-        %p Download <a href="#{site.standalone_download_link}">selendroid-standalone.jar</a> (right top section of this page) cd to the folder where you downloaded the jar, and run
+        %p Download <a href="#{site.standalone_download_link}">selendroid-standalone.jar</a> and <em>cd</em> to the folder where you downloaded the jar, and run
         %pre
           %code
             java -jar selendroid-standalone-#{site.current_version}-with-dependencies.jar -app selendroid-test-app-#{site.current_version}.apk
-        %p Selendroid-standalone will start a http server on port 5555 and will scan all Android virtual devices (avd) that the user has created (~/.android/avd/) and will identify the Android target version and the screen size. If an emulator is running, it will be ignored. If there are Android hardware devices be plugged in, they are added to the device store as well.
+        %p Selendroid-standalone will start a http server on port 5555 and will scan all Android virtual devices (avd) that the user has created (~/.android/avd/) and will identify the Android target version and the screen size. If an emulator is running, it will be ignored. If there are Android hardware devices plugged in, they are added to the device store as well.
         %p You can check that the application and the devices are recognized by opening a browser and navigating to: <a href="http://localhost:5555/wd/hub/status">http://localhost:5555/wd/hub/status</a>.
         %p You should see a json object with all the info about the app:
         %pre
@@ -133,8 +133,8 @@ author: Dominik Dary
                 Assert.assertEquals("Selendroid", inputField.getText());
                 driver.quit();
         %p If you prefer to write your tests in Python, you find the same test <a href="https://gist.github.com/DominikDary/6930396">here</a>.</p>
-        %p When starting a new test session in the capabilities the android target platform and the id of the specified app must be provided. Based on that information an matching Android device will identified. Otherwise the test session will not be started. Important: before filing a bug please make sure the desired capabilities in your test are matching the on available on the <a href="http://localhost:5555/wd/hub/status">server</a>.
-        %p After the found device has been initialized, a customized selendroid-server will be created and will automatically installed on the device. The app under test will be installed as well and then the selendroid-server on the device will be automatically started.
+        %p When starting a new test session in the capabilities the id of the specified app must be provided. Based on that information a matching Android device will identified. Otherwise the test session will not be started. Important: before filing a bug please make sure the desired capabilities in your test are matching on the available <a href="http://localhost:5555/wd/hub/status">server</a>.
+        %p After the found device has been initialized, a customized selendroid-server will be created and will be automatically installed on the device. The app under test will be installed as well and then the selendroid-server on the device will be automatically started.
         %p After the test session has been successfully initialized, the test commands like finding an element and interact with this element are routed to this device. If the test session has ended, the emulator will be stopped automatically.
         %h3 Additional parameters in the desired capabilities
         %p Please note, that this parameters are all optional.
@@ -159,7 +159,7 @@ author: Dominik Dary
         %h2 Devices
         %p Selendroid supports testing on Hardware devices as well as using Android emulators.
         %h3 Using Emulators
-        %p Selendroid is only able to start and stop Android Virtual Devices (Avd) that already exist. After an emulator has been created, it is recommended to do the first start manually to verify everything works fine. When creating avds please read the following configuration recommendations:
+        %p Selendroid is only able to start and stop Android Virtual Devices (Avd) that already exist. After an emulator has been created, it is recommended to first start manually to verify everything works fine. When creating avds please read the following configuration recommendations:
         %ul
           %li Use whenever possible the Intel x86 ABI
           %li Install <a href="http://software.intel.com/en-us/articles/installation-instructions-for-intel-hardware-accelerated-execution-manager-microsoft">Intel x86 Emulator Accelerator</a> on Mac and Windows and use KVM on Linux to enable hardware acceleration to massively speed up the Emulator
@@ -167,7 +167,7 @@ author: Dominik Dary
           %li Use at least 32MB of VM Heap per emulator</li>
           %li Configure the hardware keyboard to be used: <code>hw.keyboard=yes</code>
           %li Use the Host GPU. If after the first start of the emulator only a black screen is displayed, please deactivate this option.
-          %li The number of emulators you can in parallel per machine depends heavily on the hardware of the machine you use.
+          %li The number of emulators you can run in parallel per machine depends heavily on the hardware of the machine you use.
         %h3 Using Hardware Devices
         %ul
           %li Please make sure the device has no screen lock configured.
