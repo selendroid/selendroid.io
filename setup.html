@@ -100,26 +100,26 @@
           </div>
           <div class="span9">
             <h1>Getting started with Selendroid</h1>
-            <p>Selendroid is based on the Android instrumentation framework, so only testing one specific app is currently supported. Selendroid can only be used if your application has the permission:</p>
+            <p>Selendroid is based on the Android instrumentation framework, so currently, only the testing of one specific app is supported. Selendroid can only be used if your application has permission:</p>
             <code>&lt;uses-permission android:name="android.**permission.INTERNET"/&gt;</code>
-            <p>Like the Selenium project, we offer as well jar (selendroid-standalone), that contains all the dependencies</p>
+            <p>Like the Selenium project, we offer as well a jar (selendroid-standalone), that contains all the dependencies</p>
             <section id="systemRequirements">
               <h2>System Requirements</h2>
               <ol>
                 <li>Selendroid is tested to run on Mac, Linux and Windows.</li>
                 <li>Java sdk (minimum 1.6) is installed and JAVA_HOME is configured</li></li>
                 <li>Latest <a href="http://developer.android.com/sdk/index.html">Android-Sdk</a> is installed and ANDROID_HOME is set.</li>
-                <li>At least one Android virtual device must be existent or an Android hardware device must be plugged in to the computer. For best practices about Android devices please read <a href="#androidDevices">this section</a>.</li>
+                <li>At least one Android virtual device must exist or an Android hardware device must be plugged in to the computer. For best practices about Android devices please read <a href="#androidDevices">this section</a>.</li>
               </ol>
             </section>
             <section id="getAut">
               <h2>Getting an application under test</h2>
               <p>Selendroid can be used to test already built apps. Those Android apps (apk file) must exists on the machine, where the selendroid server will be started. The reason for this is that a customized selendroid-server for the app under test will be created and both apps (selendroid server and AUT) must be signed with the same certificate in order to be able to install the apks on the device.</p>
-              <p>When you want to play around with selendroid, you can use our app that we use to verify that actually selendroid works as expected. You can download this app <a href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-test-app/0.7.0/selendroid-test-app-0.7.0.apk">here</a></p>
+              <p>When you want to play around with selendroid, you can use our <em>selendroid-test-app</em> which we use to verify that actually selendroid works as expected. You can download this app <a href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-test-app/0.7.0/selendroid-test-app-0.7.0.apk">here</a></p>
             </section>
             <section id="launchingSelendroid">
               <h2>Launching Selendroid</h2>
-              <p>Download <a href="https://github.com/selendroid/selendroid/releases/download/0.7.0/selendroid-standalone-0.7.0-with-dependencies.jar">selendroid-standalone.jar</a> (right top section of this page) cd to the folder where you downloaded the jar, and run</p>
+              <p>Download <a href="https://github.com/selendroid/selendroid/releases/download/0.7.0/selendroid-standalone-0.7.0-with-dependencies.jar">selendroid-standalone.jar</a> and <em>cd</em> to the folder where you downloaded the jar, and run</p>
               <pre><code>java -jar selendroid-standalone-0.7.0-with-dependencies.jar -app selendroid-test-app-0.7.0.apk</code></pre>
               <p>Selendroid-standalone will start a http server on port 5555 and will scan all Android virtual devices (avd) that the user has created (~/.android/avd/) and will identify the Android target version and the screen size. If an emulator is running, it will be ignored. If there are Android hardware devices be plugged in, they are added to the device store as well.</p>
               <p>You can check that the application and the devices are recognized by opening a browser and navigating to: <a href="http://localhost:5555/wd/hub/status">http://localhost:5555/wd/hub/status</a>.</p>
