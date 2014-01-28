@@ -207,6 +207,8 @@
             <pre><code class="ruby">driver.keyboard.send_keys("\uE102")</code></pre>
             <h4>Java:</h4>
             <pre><code class="java">/* When using SelendroidDriver */&#x000A;driver.getKeyboard().sendKeys(SelendroidKeys.MENU);</code></pre>
+            <h4>Java:</h4>
+            <pre><code class="python">from selenium.webdriver.common.action_chains import ActionChains;&#x000A;&quot;&quot;&quot; Instantiate the driver like: driver = driver=webdriver.Remote( ... ) &quot;&quot;&quot;&#x000A;chain = ActionChains(driver);&#x000A;&quot;&quot;&quot; Send search key&quot;&quot;&quot;&#x000A;chain.send_keys(u'\ue103').perform()</code></pre>
             <h3>Overview about available keys</h3>
             <p>The original list is documented in the interface: <a href="https://github.com/selendroid/selendroid/blob/master/selendroid-client/src/main/java/io/selendroid/SelendroidKeys.java">SelendroidKeys</a></p>
             <dl class="dl-horizontal">
