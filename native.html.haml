@@ -167,6 +167,16 @@ author: Dominik Dary
             :escaped
               /* When using SelendroidDriver */
               driver.getKeyboard().sendKeys(SelendroidKeys.MENU);
+      %h4 Java:
+      %pre
+        %code.python
+          = preserve do
+            :escaped
+              from selenium.webdriver.common.action_chains import ActionChains;
+              """ Instantiate the driver like: driver = driver=webdriver.Remote( ... ); """
+              chain = ActionChains(driver);
+              """ Send search key"""
+              chain.send_keys(u'\ue103').perform();
       %h3 Overview about available keys
       %p The original list is documented in the interface: <a href="https://github.com/selendroid/selendroid/blob/master/selendroid-client/src/main/java/io/selendroid/SelendroidKeys.java">SelendroidKeys</a>
       %dl.dl-horizontal
