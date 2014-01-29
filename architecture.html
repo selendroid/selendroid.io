@@ -142,9 +142,9 @@
               <li>clone the project</li>
               <li>build it via <code>mvn clean install</code></li>
               <li>install the server via <code>adb install -r selendroid-server/target/selendroid-server-0.7.0.apk</code></li>
-              <li>install the server via <code>adb install -r selendroid-test-app/target/selendroid-test-app-0.7.0.apk</code></li>
-              <li>start the server: <pre><code>adb shell am instrument -e main_activity 'io.selendroid.testapp.HomeScreenActivity' io.selendroid/.ServerInstrumentation</code></pre></li>
-              <li>Do the port forwarding: <code>adb forward tcp:8080 tcp:8080</li></code></li>
+              <li>install the test app via <code>adb install -r selendroid-test-app/target/selendroid-test-app-0.7.0.apk</code></li>
+              <li>start the selendroid-server that starts the test app: <pre><code>adb shell am instrument -e main_activity 'io.selendroid.testapp.HomeScreenActivity' io.selendroid/.ServerInstrumentation</code></pre></li>
+              <li>Do the port forwarding: <code>adb forward tcp:8080 tcp:8080</code></li>
               <li><code>cd selendroid-test-app</code></li>
               <li>run the tests by <code>mvn install -DskipTests=false</code></li>
             </ul>
