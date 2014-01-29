@@ -93,6 +93,9 @@
                   <a href="#firstTest">First Test</a>
                 </li>
                 <li>
+                  <a href="#DesiredCapabilities">Desired Capabilities</a>
+                </li>
+                <li>
                   <a href="#androidDevices">Android Devices</a>
                 </li>
               </ul>
@@ -176,13 +179,52 @@
               <h2>First Tests</h2>
               <p>The selendroid client libraries are as well part of the standalone jar.</p>
               <pre><code class="java">SelendroidCapabilities capa = SelendroidCapabilities.emulator(&quot;io.selendroid.testapp:0.7.0&quot;);&#x000A;&#x000A;WebDriver driver = new SelendroidDriver(&quot;http://localhost:5555/wd/hub&quot;, capa);&#x000A;WebElement inputField = driver.findElement(By.id(&quot;my_text_field&quot;));&#x000A;Assert.assertEquals(&quot;true&quot;, inputField.getAttribute(&quot;enabled&quot;));&#x000A;inputField.sendKeys(&quot;Selendroid&quot;);&#x000A;Assert.assertEquals(&quot;Selendroid&quot;, inputField.getText());&#x000A;driver.quit();</code></pre>
-              <p>If you prefer to write your tests in Python, you find the same test <a href="https://gist.github.com/DominikDary/6930396">here</a>.</p></p>
+              <p>If you prefer to write your tests in Python, you find the same test <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/python/FindElementTest.py">here</a>.</p></p>
               <p>When starting a new test session in the capabilities the id of the specified app must be provided. Based on that information a matching Android device will identified. Otherwise the test session will not be started. Important: before filing a bug please make sure the desired capabilities in your test are matching on the available <a href="http://localhost:5555/wd/hub/status">server</a>.</p>
               <p>After the found device has been initialized, a customized selendroid-server will be created and will be automatically installed on the device. The app under test will be installed as well and then the selendroid-server on the device will be automatically started.</p>
               <p>After the test session has been successfully initialized, the test commands like finding an element and interact with this element are routed to this device. If the test session has ended, the emulator will be stopped automatically.</p>
-              <h3>Additional parameters in the desired capabilities</h3>
-              <p>Please note, that this parameters are all optional.</p>
+              <h3 id="DesiredCapabilities">Desired Capabilities (SelendroidCapabilities)</h3>
+              <h4>Mandatory properties</h4>
+              <p>It is recommend to use the <code>SelendroidCapabilities</code>. There you find convenient methods like:</p>
+              <ul>
+                <li><code>SelendroidCapabilities.emulator( ... )</code>: This requests an emulator and will fail the test session if no emulator is available.</li>
+                <li><code>SelendroidCapabilities.device( ... )</code> This requests a hardware device and will fail the test session if no device is plugged in.</li>
+                <li><code>SelendroidCapabilities.android( ... )</code> This starts a mobile web testing session.</li>
+              </ul>
+              <p>The <code>SelendroidCapabilities</code> are only for Java projects available.</p>
+              <h5>For testing native or hybrid apps:</h5>
               <dl>
+                <dt>
+                  aut
+                </dt>
+                <dd>
+                  Specify the app id of the app under test (aut). E.g.  <code>io.selendroid.testapp:0.7.0</code>
+                </dd>
+              </dl>
+              <h5>For testing Mobile Web:</h5>
+              <dl>
+                <dt>
+                  browserName
+                </dt>
+                <dd>
+                  Value must be <code>android</code> to start the Android driver webview app.
+                </dd>
+              </dl>
+              <p>Please note that either <code>aut</code> or <code>browserName</code> can be used for a test session.</p>
+              <h4>Optional properties in the desired capabilities</h4>
+              <dl>
+                <dt>
+                  emulator
+                </dt>
+                <dd>
+                  If <code>True</code>, an emulator will be requested. Otherwise a hardware device.
+                </dd>
+                <dt>
+                  androidTarget
+                </dt>
+                <dd>
+                  Specify the Android target API version of the device. E.g. for KitKat it is: <code>ANDROID19</code>
+                </dd>
                 <dt>
                   locale
                 </dt>
