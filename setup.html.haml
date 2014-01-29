@@ -17,6 +17,8 @@ author: Dominik Dary
           %li
             %a{:href=>'#firstTest'} First Test
           %li
+            %a{:href=>'#DesiredCapabilities'} Desired Capabilities
+          %li
             %a{:href=>'#androidDevices'} Android Devices
     .span9
       %h1 Getting started with Selendroid
@@ -137,9 +139,37 @@ author: Dominik Dary
         %p When starting a new test session in the capabilities the id of the specified app must be provided. Based on that information a matching Android device will identified. Otherwise the test session will not be started. Important: before filing a bug please make sure the desired capabilities in your test are matching on the available <a href="http://localhost:5555/wd/hub/status">server</a>.
         %p After the found device has been initialized, a customized selendroid-server will be created and will be automatically installed on the device. The app under test will be installed as well and then the selendroid-server on the device will be automatically started.
         %p After the test session has been successfully initialized, the test commands like finding an element and interact with this element are routed to this device. If the test session has ended, the emulator will be stopped automatically.
-        %h3 Additional parameters in the desired capabilities
-        %p Please note, that this parameters are all optional.
+        %h3#DesiredCapabilities Desired Capabilities (SelendroidCapabilities)
+        %h4 Mandatory properties
+        %p It is recommend to use the <code>SelendroidCapabilities</code>. There you find convenient methods like:
+        %ul
+          %li <code>SelendroidCapabilities.emulator( ... )</code>: This requests an emulator and will fail the test session if no emulator is available.
+          %li <code>SelendroidCapabilities.device( ... )</code> This requests a hardware device and will fail the test session if no device is plugged in.
+          %li <code>SelendroidCapabilities.android( ... )</code> This starts a mobile web testing session.
+        %p The <code>SelendroidCapabilities</code> are only for Java projects available.
+        %h5 For testing native or hybrid apps:
         %dl
+          %dt
+            aut
+          %dd
+            Specify the app id of the app under test (aut). E.g.  <code>io.selendroid.testapp:#{site.current_version}</code>
+        %h5 For testing Mobile Web:
+        %dl
+          %dt
+            browserName
+          %dd
+            Value must be <code>android</code> to start the Android driver webview app.
+        %p Please note that either <code>aut</code> or <code>browserName</code> can be used for a test session.
+        %h4 Optional properties in the desired capabilities
+        %dl
+          %dt
+            emulator
+          %dd
+            If <code>True</code>, an emulator will be requested. Otherwise a hardware device.
+          %dt
+            androidTarget
+          %dd
+            Specify the Android target API version of the device. E.g. for KitKat it is: <code>ANDROID19</code>
           %dt
             locale
           %dd
