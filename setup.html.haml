@@ -133,7 +133,7 @@ author: Dominik Dary
                 inputField.sendKeys("Selendroid");
                 Assert.assertEquals("Selendroid", inputField.getText());
                 driver.quit();
-        %p If you prefer to write your tests in Python, you find the same test <a href="https://gist.github.com/DominikDary/6930396">here</a>.</p>
+        %p If you prefer to write your tests in Python, you find the same test <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/python/FindElementTest.py">here</a>.</p>
         %p When starting a new test session in the capabilities the id of the specified app must be provided. Based on that information a matching Android device will identified. Otherwise the test session will not be started. Important: before filing a bug please make sure the desired capabilities in your test are matching on the available <a href="http://localhost:5555/wd/hub/status">server</a>.
         %p After the found device has been initialized, a customized selendroid-server will be created and will be automatically installed on the device. The app under test will be installed as well and then the selendroid-server on the device will be automatically started.
         %p After the test session has been successfully initialized, the test commands like finding an element and interact with this element are routed to this device. If the test session has ended, the emulator will be stopped automatically.
