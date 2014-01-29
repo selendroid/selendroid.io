@@ -28,8 +28,9 @@ author: Dominik Dary
         %h2 System Requirements
         %ol
           %li Selendroid is tested to run on Mac, Linux and Windows.
-          %li Java sdk (minimum 1.6) is installed and JAVA_HOME is configured</li>
-          %li Latest <a href="http://developer.android.com/sdk/index.html">Android-Sdk</a> is installed and ANDROID_HOME is set.
+          %li <b>Java SDK</b> (minimum 1.6) is installed and <em>JAVA_HOME</em> is configured. IMPORTANT: If JAVA_HOME is pointing to a Java runtime environment, selendroid will produce errors because tools like the <em>jarsigner</em> are not available!</li>
+          %li Latest <a href="http://developer.android.com/sdk/index.html">Android-Sdk</a> is installed and <em>ANDROID_HOME</em> is set. If you need detailed instructions, have a look at <a href="http://spring.io/guides/gs/android/">this guide</a>.
+          %li If you run selendroid on a 64bit Linux machine, please install <code>sudo apt-get install ia32-libs</code>.
           %li At least one Android virtual device must exist or an Android hardware device must be plugged in to the computer. For best practices about Android devices please read <a href="#androidDevices">this section</a>.
       %section#getAut 
         %h2 Getting an application under test
