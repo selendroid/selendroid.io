@@ -64,9 +64,9 @@ author: Dominik Dary
         %li clone the project
         %li build it via <code>mvn clean install</code>
         %li install the server via <code>adb install -r selendroid-server/target/selendroid-server-#{site.current_version}.apk</code>
-        %li install the server via <code>adb install -r selendroid-test-app/target/selendroid-test-app-#{site.current_version}.apk</code>
-        %li start the server: <pre><code>adb shell am instrument -e main_activity 'io.selendroid.testapp.HomeScreenActivity' io.selendroid/.ServerInstrumentation</code></pre>
-        %li Do the port forwarding: <code>adb forward tcp:8080 tcp:8080</li></code>
+        %li install the test app via <code>adb install -r selendroid-test-app/target/selendroid-test-app-#{site.current_version}.apk</code>
+        %li start the selendroid-server that starts the test app: <pre><code>adb shell am instrument -e main_activity 'io.selendroid.testapp.HomeScreenActivity' io.selendroid/.ServerInstrumentation</code></pre>
+        %li Do the port forwarding: <code>adb forward tcp:8080 tcp:8080</code>
         %li <code>cd selendroid-test-app</code>
         %li run the tests by <code>mvn install -DskipTests=false</code>
       %h2#ci CI Infrastructure
