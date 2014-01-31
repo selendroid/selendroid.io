@@ -103,33 +103,32 @@
           </div>
           <div class="span9">
             <h1>Getting started with Selendroid</h1>
-            <p>Selendroid is based on the Android instrumentation framework, so currently, only the testing of one specific app is supported. Selendroid can only be used if your application has permission:</p>
+            <p>Selendroid is based on the Android instrumentation framework. Currently only the testing of one specific app is supported. Selendroid requires the following permission for your app:</p>
             <code>&lt;uses-permission android:name="android.**permission.INTERNET"/&gt;</code>
-            <p>Like the Selenium project, we offer as well a jar (selendroid-standalone), that contains all the dependencies</p>
             <section id="systemRequirements">
               <h2>System Requirements</h2>
               <ol>
-                <li>Selendroid is tested to run on Mac, Linux and Windows.</li>
-                <li><b>Java SDK</b> (minimum 1.6) is installed and <em>JAVA_HOME</em> is configured. IMPORTANT: If JAVA_HOME is pointing to a Java runtime environment, selendroid will produce errors because tools like the <em>jarsigner</em> are not available!</li></li>
-                <li>Latest <a href="http://developer.android.com/sdk/index.html">Android-Sdk</a> is installed and <em>ANDROID_HOME</em> is set. If you need detailed instructions, have a look at <a href="http://spring.io/guides/gs/android/">this guide</a>.</li>
+                <li>Selendroid can be used on Mac, Linux and Windows.</li>
+                <li><b>Java SDK</b> (minimum 1.6) must be installed and <em>JAVA_HOME</em> configured. IMPORTANT: If JAVA_HOME is pointing to a Java runtime environment, selendroid will produce errors because tools like the <em>jarsigner</em> are not available!</li></li>
+                <li>Latest <a href="http://developer.android.com/sdk/index.html">Android-Sdk</a> must be installed and <em>ANDROID_HOME</em> set. If detailed instructions are needed, have a look at <a href="http://spring.io/guides/gs/android/">this guide</a>.</li>
                 <li>If you run selendroid on a 64bit Linux machine, please install <code>sudo apt-get install ia32-libs</code>.</li>
                 <li>At least one Android virtual device must exist or an Android hardware device must be plugged in to the computer. For best practices about Android devices please read <a href="#androidDevices">this section</a>.</li>
               </ol>
             </section>
             <section id="getAut">
               <h2>Getting an application under test</h2>
-              <p>Selendroid can be used to test already built apps. Those Android apps (apk file) must exists on the machine, where the selendroid server will be started. The reason for this is that a customized selendroid-server for the app under test will be created and both apps (selendroid server and AUT) must be signed with the same certificate in order to be able to install the apks on the device.</p>
-              <p>When you want to play around with selendroid, you can use our <em>selendroid-test-app</em> which we use to verify that actually selendroid works as expected. You can download this app <a href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-test-app/0.7.0/selendroid-test-app-0.7.0.apk">here</a></p>
+              <p>Selendroid can be used to test already built apps. Those Android apps (apk file) must exist on the machine, where the <em>selendroid-standalone</em> server will be started. The reason for this is that a customized <em>selendroid-server</em> for the app under test (AUT) will be created. Both apps (selendroid-server and AUT) must be signed with the same certificate in order to install the apks on the device.</p>
+              <p>If you want to play around with selendroid, you can use our <em>selendroid-test-app</em> which we use to verify that actually selendroid works as expected. You can download this app <a href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-test-app/0.7.0/selendroid-test-app-0.7.0.apk">here</a>.</p>
             </section>
             <section id="launchingSelendroid">
               <h2>Launching Selendroid</h2>
-              <p>Download <a href="https://github.com/selendroid/selendroid/releases/download/0.7.0/selendroid-standalone-0.7.0-with-dependencies.jar">selendroid-standalone.jar</a> and <em>cd</em> to the folder where you downloaded the jar, and run</p>
+              <p>Download <a href="https://github.com/selendroid/selendroid/releases/download/0.7.0/selendroid-standalone-0.7.0-with-dependencies.jar">selendroid-standalone.jar</a> and <em>cd</em> to the folder where you downloaded the jar, and run:</p>
               <pre><code>java -jar selendroid-standalone-0.7.0-with-dependencies.jar -app selendroid-test-app-0.7.0.apk</code></pre>
-              <p>Selendroid-standalone will start a http server on port 5555 and will scan all Android virtual devices (avd) that the user has created (~/.android/avd/) and will identify the Android target version and the screen size. If an emulator is running, it will be ignored. If there are Android hardware devices plugged in, they are added to the device store as well.</p>
-              <p>You can check that the application and the devices are recognized by opening a browser and navigating to: <a href="http://localhost:5555/wd/hub/status">http://localhost:5555/wd/hub/status</a>.</p>
-              <p>You should see a json object with all the info about the app:</p>
+              <p>Selendroid-standalone will start a http server on port 5555 and will scan all Android virtual devices (avd) that the user has created (~/.android/avd/). The Android target version and the screen size will be identified. If an emulator is running, it will be ignored. If there are Android hardware devices plugged in, they will also be added to the device store.</p>
+              <p>You can check that the application(s) and the devices are recognized by opening a browser and navigating to: <a href="http://localhost:5555/wd/hub/status">http://localhost:5555/wd/hub/status</a>.</p>
+              <p>You should see a result similiar to this:</p>
               <pre><code class="json">{&#x000A;  status: 0,&#x000A;  value: {&#x000A;  &quot;os&quot;: {&#x000A;    &quot;name&quot;: &quot;Android&quot;&#x000A;    },&#x000A;  &quot;build&quot;: {&#x000A;    &quot;browserName&quot;: &quot;selendroid&quot;,&#x000A;    &quot;version&quot;: &quot;0.7.0&quot;&#x000A;  },&#x000A;  &quot;supportedApps&quot;: [{&#x000A;    &quot;appId&quot;: &quot;io.selendroid.testapp:0.7.0&quot;,&#x000A;    &quot;mainActivity&quot;: &quot;io.selendroid.testapp.HomeScreenActivity&quot;,&#x000A;    &quot;basePackage&quot;: &quot;io.selendroid.testapp&quot;&#x000A;  }],&#x000A;  &quot;supportedDevices&quot;: [{&#x000A;    &quot;screenSize&quot;: &quot;320x480&quot;,&#x000A;    &quot;targetPlatform&quot;: &quot;ANDROID17&quot;,&#x000A;    &quot;emulator&quot;: true,&#x000A;    &quot;avdName&quot;: &quot;latest&quot;&#x000A;  }, {&#x000A;    &quot;screenSize&quot;: &quot;320x480&quot;,&#x000A;    &quot;targetPlatform&quot;: &quot;ANDROID16&quot;,&#x000A;    &quot;emulator&quot;: true,&#x000A;    &quot;avdName&quot;: &quot;es&quot;&#x000A;  }, {&#x000A;    &quot;screenSize&quot;: &quot;320x480&quot;,&#x000A;    &quot;targetPlatform&quot;: &quot;ANDROID10&quot;,&#x000A;    &quot;emulator&quot;: true,&#x000A;    &quot;avdName&quot;: &quot;AVD_for_api10&quot;&#x000A;  }]&#x000A;}</code></pre>
-              <h3>Command line parameters</h3>
+              <h3>Selendroid-Standalone command line parameters</h3>
               <dl>
                 <dt>
                   -port
@@ -141,7 +140,7 @@
                   -app, -aut
                 </dt>
                 <dd>
-                  Location of the application under test. Absolute path expected.
+                  Specify the location of the application under test. Absolute path expected.
                 </dd>
                 <dt>
                   -timeoutEmulatorStart
@@ -153,45 +152,45 @@
                   -emulatorPort
                 </dt>
                 <dd>
-                  Port number to start running emulators on.
+                  Specify the port number to start running emulators on.
                 </dd>
                 <dt>
                   -deviceScreenshot
                 </dt>
                 <dd>
-                  This enables that screenshots will be taken on the device instead of using the ddmlib library.
+                  This enables screenshots to be taken on the device instead of using the <em>ddmlib</em> library.
                 </dd>
                 <dt>
                   -installedApp
                 </dt>
                 <dd>
-                  For developers who already have the app installed (and emulator running) format = tld.company.app/ActivityClass:version
+                  Developers who already have the app installed (and emulator running) must specify the installed app using this format: <code>tld.company.app/ActivityClass:version</code>.
                 </dd>
                 <dt>
                   -verbose
                 </dt>
                 <dd>
-                  Debug mode
+                  This prints additional log statements making it easier to identify issues.
                 </dd>
               </dl>
             </section>
             <section id="firstTest">
               <h2>First Tests</h2>
-              <p>The selendroid client libraries are as well part of the standalone jar.</p>
+              <p>Tests are written using the Selenium 2 client API. For Java we provide <em>selendroid-client</em> libraries that are used in the following example:</p>
               <pre><code class="java">SelendroidCapabilities capa = SelendroidCapabilities.emulator(&quot;io.selendroid.testapp:0.7.0&quot;);&#x000A;&#x000A;WebDriver driver = new SelendroidDriver(&quot;http://localhost:5555/wd/hub&quot;, capa);&#x000A;WebElement inputField = driver.findElement(By.id(&quot;my_text_field&quot;));&#x000A;Assert.assertEquals(&quot;true&quot;, inputField.getAttribute(&quot;enabled&quot;));&#x000A;inputField.sendKeys(&quot;Selendroid&quot;);&#x000A;Assert.assertEquals(&quot;Selendroid&quot;, inputField.getText());&#x000A;driver.quit();</code></pre>
-              <p>If you prefer to write your tests in Python, you find the same test <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/python/FindElementTest.py">here</a>.</p></p>
-              <p>When starting a new test session in the capabilities the id of the specified app must be provided. Based on that information a matching Android device will identified. Otherwise the test session will not be started. Important: before filing a bug please make sure the desired capabilities in your test are matching on the available <a href="http://localhost:5555/wd/hub/status">server</a>.</p>
-              <p>After the found device has been initialized, a customized selendroid-server will be created and will be automatically installed on the device. The app under test will be installed as well and then the selendroid-server on the device will be automatically started.</p>
-              <p>After the test session has been successfully initialized, the test commands like finding an element and interact with this element are routed to this device. If the test session has ended, the emulator will be stopped automatically.</p>
+              <p>If, for example, you prefer to write your tests in Python, the same test can be found <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/python/FindElementTest.py">here</a>.</p></p>
+              <p>In order to create a new test session in the desired capabilities, the id of the app under test must be provided in the format: <code>io.selendroid.testapp:0.7.0</code>. Based on that information a matching Android device will be identified, otherwise the test session will throw an error and not start. Important: before filing a bug: please make sure the desired capabilities in your test match the <a href="http://localhost:5555/wd/hub/status">supported</a> apps and devices available.</p>
+              <p>After the found device has been initialized, a customized <em>selendroid-server</em> will be created and automatically installed on the device. The app under test will also be installed and the <em>selendroid-server</em> on the device will then be automatically started.</p>
+              <p>After the test session has been successfully initialized, the test commands such as 'find an element' and 'element interactions' are routed to this device. If the test session has ended, the emulator will stop automatically.</p>
               <h3 id="DesiredCapabilities">Desired Capabilities (SelendroidCapabilities)</h3>
               <h4>Mandatory properties</h4>
-              <p>It is recommend to use the <code>SelendroidCapabilities</code>. There you find convenient methods like:</p>
+              <p>We recommend the use of <code>SelendroidCapabilities</code>. There you find convenient methods like:</p>
               <ul>
                 <li><code>SelendroidCapabilities.emulator( ... )</code>: This requests an emulator and will fail the test session if no emulator is available.</li>
                 <li><code>SelendroidCapabilities.device( ... )</code> This requests a hardware device and will fail the test session if no device is plugged in.</li>
                 <li><code>SelendroidCapabilities.android( ... )</code> This starts a mobile web testing session.</li>
               </ul>
-              <p>The <code>SelendroidCapabilities</code> are only for Java projects available.</p>
+              <p>The <code>SelendroidCapabilities</code> are only available for Java projects. For other programming languages use the following properties in the <em>DesiredCapabilities</em> of the Selenium client apis:</p>
               <h5>For testing native or hybrid apps:</h5>
               <dl>
                 <dt>
@@ -207,7 +206,7 @@
                   browserName
                 </dt>
                 <dd>
-                  Value must be <code>android</code> to start the Android driver webview app.
+                  Value must be <code>android</code> to start the 'Android driver webview app'.
                 </dd>
               </dl>
               <p>Please note that either <code>aut</code> or <code>browserName</code> can be used for a test session.</p>
@@ -217,7 +216,7 @@
                   emulator
                 </dt>
                 <dd>
-                  If <code>True</code>, an emulator will be requested. Otherwise a hardware device.
+                  If <code>True</code>, an emulator will be requested. If <code>False</code>, a hardware device will be requested.
                 </dd>
                 <dt>
                   androidTarget
@@ -229,7 +228,7 @@
                   locale
                 </dt>
                 <dd>
-                  Specify the locale of the device that should be used in the test session. If the device is an emulator, during start the locale will be automatically configured. E.g. <code>de_CH</code>
+                  Specify the locale of an emulator to be used in the test session. During the start the locale will be automatically configured. E.g. <code>de_CH</code>
                 </dd>
                 <dt>
                   screenSize
@@ -247,28 +246,29 @@
                   preSessionAdbCommands
                 </dt>
                 <dd>
-                  A list of adb commands that will be executed on the target device before selendroid-server will be started. E.g. <code>shell setprop name selendroid</code>, please note that the adb command itself and the serial will be added by selendroid automatically.
+                  Specify a list of adb commands that will be executed on the target device before <em>selendroid-server</em> will be started. E.g. <code>shell setprop name selendroid</code>, please note that the adb command itself and the serial will be added by selendroid automatically.
                 </dd>
               </dl>
             </section>
             <section id="androidDevices">
               <h2>Devices</h2>
-              <p>Selendroid supports testing on Hardware devices as well as using Android emulators.</p>
+              <p>Selendroid supports testing on hardware devices as well as using Android emulators.</p>
               <h3>Using Emulators</h3>
-              <p>Selendroid is only able to start and stop Android Virtual Devices (Avd) that already exist. After an emulator has been created, it is recommended to first start manually to verify everything works fine. When creating avds please read the following configuration recommendations:</p>
+              <p>Selendroid can start and stop Android Virtual Devices (Avd). It cannot create new emulators, they must be created manually by the tester. After an emulator has been created, we recommend the first start be done manually in order to be sure everything works as expected.</p>
+              <p>When creating avds, please read the following configuration recommendations:</p>
               <ul>
-                <li>Use whenever possible the Intel x86 ABI</li>
+                <li>Whenever possible, use the Intel x86 ABI</li>
                 <li>Install <a href="http://software.intel.com/en-us/articles/installation-instructions-for-intel-hardware-accelerated-execution-manager-microsoft">Intel x86 Emulator Accelerator</a> on Mac and Windows and use KVM on Linux to enable hardware acceleration to massively speed up the Emulator</li>
                 <li>Use at least 1024MB of RAM per emulator</li></li>
                 <li>Use at least 32MB of VM Heap per emulator</li></li>
                 <li>Configure the hardware keyboard to be used: <code>hw.keyboard=yes</code></li>
-                <li>Use the Host GPU. If after the first start of the emulator only a black screen is displayed, please deactivate this option.</li>
+                <li>Use the Host GPU. If only a black screen is displayed, please deactivate this option.</li>
                 <li>The number of emulators you can run in parallel per machine depends heavily on the hardware of the machine you use.</li>
               </ul>
               <h3>Using Hardware Devices</h3>
               <ul>
                 <li>Please make sure the device has no screen lock configured.</li>
-                <li>Devices must be plugged in via USB to the computer selendroid-standalone component is running on.</li>
+                <li>Devices must be plugged in via USB to the computer that the <em>selendroid-standalone</em> component is running on.</li>
               </ul>
             </section>
           </div>
