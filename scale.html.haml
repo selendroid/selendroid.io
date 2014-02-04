@@ -55,22 +55,25 @@ author: Dominik Dary
             :escaped
               {
                 "capabilities": [{
-                        "browserName": "selendroid",
-                        "maxInstances": 1,
-                        "locale": "en_GB",
-                        "androidTarget": "ANDROID16",
-                        "screenSize": "480x800",
-                        "aut": "io.selendroid.testapp:#{site.current_version}"
+                    "browserName": "selendroid",
+                    "maxInstances": 1,
+                    "locale": "en_GB",
+                    "androidTarget": "ANDROID16",
+                    "screenSize": "480x800",
+                    "aut": "io.selendroid.testapp:0.7.0"
+                }, {
+                    "browserName": "android",
+                    "maxInstances": 1
                 }],
                 "configuration": {
-                        "maxSession": 1,
-                        "register": true,
-                        "hubHost": "localhost",
-                        "hubPort": 4444,
-                        "remoteHost": "http://localhost:5555",
-                        "proxy": "io.selendroid.grid.SelendroidSessionProxy"
+                    "maxSession": 1,
+                    "register": true,
+                    "hubHost": "localhost",
+                    "hubPort": 4444,
+                    "remoteHost": "http://localhost:5555",
+                    "proxy": "io.selendroid.grid.SelendroidSessionProxy"
                 }
-              }
+              }      
       %p The node registration can be done by sending the node config to the hub using <em>curl</em>:
       %pre
         %code.bash
