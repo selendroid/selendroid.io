@@ -116,7 +116,7 @@
             </ul>
             <p>Here you find an overview about the architecture:</p></p>
             <img src="https://docs.google.com/drawings/d/1Mo1YWUBgDNzcIBSq8EuyBjNhgpQk-3F91lEt9_43ueQ/pub?w=772&amp;h=298">
-            <p>The <em>selendroid-standalone-0.7.0.jar</em> does contains the standalone-server, selendroid-server and as well the selendroid-client driver.</p>
+            <p>The <em>selendroid-standalone-0.8.jar</em> does contains the standalone-server, selendroid-server and as well the selendroid-client driver.</p>
             <p>The main component that is responsible for the app automation part is selendroid-server.</p>
             <h2 id="selendroidServer">Selendroid-Server</h2>
             <p>Central driver class is <code>DefaultSelendroidDriver</code>. That class is responsible for doing the common activities (like taking screenshots) for both contexts <code>NATIVE_APP</code> and <code>WEBVIEW</code>.</p>
@@ -141,8 +141,8 @@
             <ul>
               <li>clone the project</li>
               <li>build it via <code>mvn clean install</code></li>
-              <li>install the server via <code>adb install -r selendroid-server/target/selendroid-server-0.7.0.apk</code></li>
-              <li>install the test app via <code>adb install -r selendroid-test-app/target/selendroid-test-app-0.7.0.apk</code></li>
+              <li>install the server via <code>adb install -r selendroid-server/target/selendroid-server-0.8.apk</code></li>
+              <li>install the test app via <code>adb install -r selendroid-test-app/target/selendroid-test-app-0.8.apk</code></li>
               <li>start the selendroid-server that starts the test app: <pre><code>adb shell am instrument -e main_activity 'io.selendroid.testapp.HomeScreenActivity' io.selendroid/.ServerInstrumentation</code></pre></li>
               <li>Do the port forwarding: <code>adb forward tcp:8080 tcp:8080</code></li>
               <li><code>cd selendroid-test-app</code></li>
