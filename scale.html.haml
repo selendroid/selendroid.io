@@ -60,7 +60,7 @@ author: Dominik Dary
                     "locale": "en_GB",
                     "androidTarget": "ANDROID16",
                     "screenSize": "480x800",
-                    "aut": "io.selendroid.testapp:0.7.0"
+                    "aut": "io.selendroid.testapp:0.8.0"
                 }, {
                     "browserName": "android",
                     "maxInstances": 1
@@ -91,7 +91,7 @@ author: Dominik Dary
               public void testShouldBeAbleToRegisterAnUser() throws Exception {
                 SelendroidCapabilities capa =
                     SelendroidCapabilities.emulator(DeviceTargetPlatform.ANDROID16,
-                        "io.selendroid.testapp:0.7.0");
+                        "io.selendroid.testapp:0.8.0");
                 capa.setLocale("en_GB");
                 WebDriver driver = new SelendroidDriver("http://localhost:4444/wd/hub", capa);
                 driver.findElement(By.id("startUserRegistration")).click();
