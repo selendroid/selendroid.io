@@ -25,22 +25,22 @@ author: Dominik Dary
     .span9
       %h1 Selendroid's Architecture
       %h2#overview Overview about the selendroid
-      %p Selendroid is based on the Android instrumentation framework, so therefor only testing one app is supported. Selendroid contains four major components:
+      %p Selendroid is based on the Android instrumentation framework, and therefore only testing one app is supported. Selendroid contains four major components:
       %ul
         %li <em>Selendroid-Client</em> - the java client library (based on the selenium java client).
         %li <em>Selendroid-Server</em> - that is running beside your app on the Android device.
-        %li <em>AndroidDriver-App</em> - a build in Android driver webview app to test the mobile web.
+        %li <em>AndroidDriver-App</em> - a built in Android driver webview app to test the mobile web.
         %li <em>Selendroid-Standalone</em> - manages different Android devices by installing the selendroid-server and the app under test.
-      %p Here you find an overview about the architecture:</p>
+      %p Below you can see an overview about the architecture:</p>
       %img{:src=>'https://docs.google.com/drawings/d/1Mo1YWUBgDNzcIBSq8EuyBjNhgpQk-3F91lEt9_43ueQ/pub?w=772&amp;h=298'}
-      %p The <em>selendroid-standalone-#{site.current_version}.jar</em> does contains the standalone-server, selendroid-server and as well the selendroid-client driver.
-      %p The main component that is responsible for the app automation part is selendroid-server.
+      %p The <em>selendroid-standalone-#{site.current_version}.jar</em> contains the standalone-server, selendroid-server and the selendroid-client driver.
+      %p Selendroid-server is the main component responsible for the app automation.
       %h2#selendroidServer Selendroid-Server
-      %p Central driver class is <code>DefaultSelendroidDriver</code>. That class is responsible for doing the common activities (like taking screenshots) for both contexts <code>NATIVE_APP</code> and <code>WEBVIEW</code>.
+      %p The central driver class is <code>DefaultSelendroidDriver</code>. This class is responsible for doing the common activities (like taking screenshots) for both contexts <code>NATIVE_APP</code> and <code>WEBVIEW</code>.
       %p The web view related driver class is <code>SelendroidWebDriver</code> and native class is <code>SelendroidNativeDriver</code>.
       %p <code>SelendroidWebDriver</code> is using <a href="http://code.google.com/p/selenium/wiki/AutomationAtoms"> Automation Atoms</a> of the selenium project to interact with the elements in the web view. For details about how to generate the atoms for selendroid please check our <a href="https://github.com/selendroid/selendroid/wiki/AndroidAtoms">wiki</a>.
       %h2#selendroidStandalone Selendroid-Standalone
-      %p Central driver class is <code>SelendroidStandaloneDriver</code> that acts as a proxy between the selendroid-client and the selendroid-server and starts e.g. an Android emulator, creates for the app under test a customized selendroid-server and installs everything on the device. After the session is initialized on the device, following request are directly forwarded to the server on the device and the response routed back to the client.
+      %p Central driver class is <code>SelendroidStandaloneDriver</code> that acts as a proxy between the selendroid-client and the selendroid-server and starts e.g. an Android emulator, creates for the app under test a customized selendroid-server and installs everything on the device. After the session is initialized on the device, subsequent requests are directly forwarded to the server on the device and the response routed back to the client.
       %h2#buildIt How to build selendroid
       %p For building Selendroid from scratch (only needed for commiters!) we use Maven 3.0.x and you have to follow the following steps:
       %pre
