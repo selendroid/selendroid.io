@@ -44,7 +44,7 @@ author: Dominik Dary
           %code
             java -jar selendroid-standalone-#{site.current_version}-with-dependencies.jar -app selendroid-test-app-#{site.current_version}.apk
         %p Selendroid-standalone will start a http server on port 5555 and will scan all Android virtual devices (avd) that the user has created (~/.android/avd/). The Android target version and the screen size will be identified. If an emulator is running, it will be ignored. If there are Android hardware devices plugged in, they will also be added to the device store.
-        %p You can check that the application(s) and the devices are recognized by opening a browser and navigating to: <a href="http://localhost:5555/wd/hub/status">http://localhost:5555/wd/hub/status</a>.
+        %p You can check that the application(s) and the devices are recognized by opening a browser and navigating to: <a href="http://localhost:4444/wd/hub/status">http://localhost:4444/wd/hub/status</a>.
         %p You should see a result similiar to this:
         %pre
           %code.json
@@ -88,7 +88,7 @@ author: Dominik Dary
             :plain
               -port
           %dd
-            Specify the port for selendroid to run on, the default is 5555.
+            Specify the port for selendroid to run on, the default is 4444.
           %dt
             :plain
               -app, -aut
@@ -126,9 +126,9 @@ author: Dominik Dary
           %code.java
             = preserve do
               :escaped
-                SelendroidCapabilities capa = SelendroidCapabilities.emulator("io.selendroid.testapp:#{site.current_version}");
+                SelendroidCapabilities capa = new SelendroidCapabilities("io.selendroid.testapp:#{site.current_version}");
 
-                WebDriver driver = new SelendroidDriver("http://localhost:5555/wd/hub", capa);
+                WebDriver driver = new SelendroidDriver(capa);
                 WebElement inputField = driver.findElement(By.id("my_text_field"));
                 Assert.assertEquals("true", inputField.getAttribute("enabled"));
                 inputField.sendKeys("Selendroid");
@@ -142,6 +142,7 @@ author: Dominik Dary
         %h4 Mandatory properties
         %p We recommend the use of <code>SelendroidCapabilities</code>. There you find convenient methods like:
         %ul
+          %li <code>new SelendroidCapabilities( ... )</code>: This requests an app for the test session without any preference about emulator or hardware device.
           %li <code>SelendroidCapabilities.emulator( ... )</code>: This requests an emulator and will fail the test session if no emulator is available.
           %li <code>SelendroidCapabilities.device( ... )</code> This requests a hardware device and will fail the test session if no device is plugged in.
           %li <code>SelendroidCapabilities.android( ... )</code> This starts a mobile web testing session.

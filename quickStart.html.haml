@@ -56,9 +56,9 @@ author: Dominik Dary
       %p Go through Selendroid's <a href="#{site.setup_page}">setup instructions</a> and download the current version. The applications that are we are using in the demo project are located in <a href="https://github.com/selendroid/demoproject-selendroid/tree/master/src/main/resources">this folder</a>.
 
       %p To start the standalone server please open your prefered shell and run:
-      %code java -jar selendroid-standalone-0.8.0-with-dependencies.jar -aut EmployeeDirectory.apk -aut selendroid-test-app-0.8.0.apk
+      %code java -jar selendroid-standalone-#{site.current_version}-with-dependencies.jar -aut EmployeeDirectory.apk -aut selendroid-test-app-#{site.current_version}.apk
 
-      %p When the server is started you can verify the current configuration <a href="http://localhost:5555/wd/hub/status">http://localhost:5555/wd/hub/status</a>:
+      %p When the server is started you can verify the current configuration <a href="http://localhost:4444/wd/hub/status">http://localhost:4444/wd/hub/status</a>:
 
       %pre
         %code.json
@@ -89,7 +89,7 @@ author: Dominik Dary
               selendroidServer = new SelendroidLauncher(config);
               selendroidServer.lauchSelendroid();
 
-      %p The test itself you find find [here](https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/java/io/selendroid/demo/SelendroidIntegrationTest.java#L45).
+      %p The test itself you find <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/java/io/selendroid/demo/SelendroidIntegrationTest.java#L45">here</a>.
 
 
 
@@ -102,8 +102,8 @@ author: Dominik Dary
           = preserve do
             :escaped
               // Create the selendroid capabilities and specify to use an emulator and selendroid's test app
-              SelendroidCapabilities caps = SelendroidCapabilities.emulator("io.selendroid.testapp:#{site.current_version}");
-              driver = new SelendroidDriver("http://localhost:5555/wd/hub", caps);
+              SelendroidCapabilities caps = new SelendroidCapabilities("io.selendroid.testapp:#{site.current_version}");
+              driver = new SelendroidDriver(caps);
 
 
       %p The capabilities are describing what app is used for testing and in this example the selendroid test app is used.
@@ -131,7 +131,7 @@ author: Dominik Dary
           = preserve do
             :escaped
       %script
-        $.getGithubFile("selendroid", "demoproject-selendroid", "0085ebef222210fe9775b9b7af1eae7b0de510cd", function(contents) {$('#nativeCode').html(contents);},14);
+        $.getGithubFile("selendroid", "demoproject-selendroid", "607373753eeb5200057938aa4a3f55036f9c2991", function(contents) {$('#nativeCode').html(contents);},14);
       %p The test demonstrates how activities can be started and how the interaction with different elements can be done.
 
       %h2#hybridAppTest Hybrid App Test
@@ -141,7 +141,7 @@ author: Dominik Dary
           = preserve do
             :escaped
       %script
-        $.getGithubFile("selendroid", "demoproject-selendroid", "3d7364c95c22f0c82bef7d0f21df4126144d829f", function(contents) {$('#hybridCode').html(contents);},14);
+        $.getGithubFile("selendroid", "demoproject-selendroid", "ad8e143d09cca3a962c75e1ef36eebb80decbc1c", function(contents) {$('#hybridCode').html(contents);},14);
 
       %h2#mobileWebTest Testing the mobile Web
       %p Selendroid supports with version 0.7.0 testing the mobile web. The sample project contains a <a href="http://goo.gl/2iLiKj">MobileWebTest</a> example:
@@ -150,7 +150,7 @@ author: Dominik Dary
           = preserve do
             :escaped
       %script
-        $.getGithubFile("selendroid", "demoproject-selendroid", "3ebeea7b711954646ce1d66a256df208ccf332c0", function(contents) {$('#mobileWebCode').html(contents);},14);
+        $.getGithubFile("selendroid", "demoproject-selendroid", "53856b48a63811da410ea4db6f545f27d34427ce", function(contents) {$('#mobileWebCode').html(contents);},14);
 
       %h2#usingOtherClientBindings Writing Tests in other languages
       %p Tests can be written in every programming language a Selenium client binding is available. A simple JUnit based python tests you can find <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/python/FindElementTest.py">here</a>:
@@ -159,4 +159,4 @@ author: Dominik Dary
           = preserve do
             :escaped
       %script
-        $.getGithubFile("selendroid", "demoproject-selendroid", "86fb04958b265b624ddbe43bb27fb2d638274c7e", function(contents) {$('#pythonSampleCode').html(contents);},4);
+        $.getGithubFile("selendroid", "demoproject-selendroid", "879ade8e167a802da5752fcfe3ea531bc4944d1e", function(contents) {$('#pythonSampleCode').html(contents);},4);
