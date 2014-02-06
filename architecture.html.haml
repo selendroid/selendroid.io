@@ -58,7 +58,7 @@ author: Dominik Dary
         %li ElementFindingTest
         %li ChildElementFindingTest
         %li ElementInteractionTest
-      %p Selendroid's native focused tests are located <a href="https://github.com/selendroid/selendroid/tree/master/selendroid-test-app/src/test/java/io/selendroid/nativetests">here</a> where as the hybrid (web view) focused test are located <a href="https://github.com/selendroid/selendroid/tree/master/selendroid-test-app/src/test/java/io/selendroid/webviewdrivertests">here</a>.
+      %p Selendroid's native focused tests are located <a href="https://github.com/selendroid/selendroid/tree/master/selendroid-test-app/src/test/java/io/selendroid/nativetests">here</a> whereas the hybrid (web view) focused test are located <a href="https://github.com/selendroid/selendroid/tree/master/selendroid-test-app/src/test/java/io/selendroid/webviewdrivertests">here</a>.
       %h3 Testing selendroid requires following steps:
       %ul
         %li clone the project
@@ -68,11 +68,11 @@ author: Dominik Dary
         %li start the test app: <code>adb shell am instrument -e main_activity 'io.selendroid.testapp.HomeScreenActivity' io.selendroid/.ServerInstrumentation</code>
         %li Do the port forwarding: <code>adb forward tcp:8080 tcp:8080</code>
         %li <code>cd selendroid-test-app</code>
-        %li run the tests by <code>mvn install -DskipTests=false</code>
+        %li Run the tests by <code>mvn install -DskipTests=false</code>
       %h2#ci CI Infrastructure
       %p We use a dedicated jenkins server for building selendroid: <a href="http://ci.selendroid.io">http://ci.selendroid.io</a>.
       %h2#contribute Contributing code
-      %p Please fork the project and create pull requests and then we will have there the discussion about merging the contribution into the main project. Please make sure you are using the code formatter <a href="http://code.google.com/p/google-styleguide/">Google Styleguide</a>.</p>
+      %p If you want to contribute to Selendroid, please fork the project and create pull requests. We will then evaluate the code and whether the contribution is suitable for merging into the main project. Please make sure that your code is formatted according to the <a href="http://code.google.com/p/google-styleguide/">Google Styleguide</a>.</p>
       %p <strong>[IMPORTANT]</strong> We are only able to merge code into the code base, if you as a contributor have signed the <a href="http://goo.gl/pAvxEI">Contributor License Agreement (CLA)</a>.
-      %p Debugging selendroid-server component is possible, please read the following <a href="http://code.google.com/p/maven-android-plugin/wiki/EclipseIntegration">instructions</a> to setup your IDE.
-      %p If you have questions to your contribution, you can come and join us on IRC: #selendroid on <a href="http://freenode.net">freenode.net</a>.
+      %p Debugging selendroid-server components is possible, please read the following <a href="http://code.google.com/p/maven-android-plugin/wiki/EclipseIntegration">instructions</a> to setup your IDE.
+      %p If you have questions about your contribution, please join us on IRC: #selendroid on <a href="http://freenode.net">freenode.net</a>.
