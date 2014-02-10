@@ -125,7 +125,7 @@
             <h2 id="selendroidStandalone">Selendroid-Standalone</h2>
             <p>Central driver class is <code>SelendroidStandaloneDriver</code> that acts as a proxy between the selendroid-client and the selendroid-server and starts e.g. an Android emulator, creates for the app under test a customized selendroid-server and installs everything on the device. After the session is initialized on the device, subsequent requests are directly forwarded to the server on the device and the response routed back to the client.</p>
             <h2 id="buildIt">How to build selendroid</h2>
-            <p>For building Selendroid from scratch (only needed for commiters!) we use Maven 3.0.x and you have to follow the following steps:</p>
+            <p>For building Selendroid from scratch (only needed for commiters!) we use Maven 3.1.1 and you have to follow the following steps:</p>
             <pre><code class="bash">git clone https://github.com/selendroid/selendroid.git&#x000A;cd selendroid/selendroid-server&#x000A;mvn package</code></pre>
             <p>You will then be able to get your version of the standalone-server in selendroid-standalone/target/</p>
             <h2 id="testIt">Testing Selendroid itself</h2>
