@@ -42,7 +42,7 @@ author: Dominik Dary
       %h2#selendroidStandalone Selendroid-Standalone
       %p Central driver class is <code>SelendroidStandaloneDriver</code> that acts as a proxy between the selendroid-client and the selendroid-server and starts e.g. an Android emulator, creates for the app under test a customized selendroid-server and installs everything on the device. After the session is initialized on the device, subsequent requests are directly forwarded to the server on the device and the response routed back to the client.
       %h2#buildIt How to build selendroid
-      %p For building Selendroid from scratch (only needed for commiters!) we use Maven 3.0.x and you have to follow the following steps:
+      %p For building Selendroid from scratch (only needed for commiters!) we use Maven 3.1.1 and you have to follow the following steps:
       %pre
         %code.bash
           = preserve do
