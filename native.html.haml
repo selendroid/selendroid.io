@@ -166,7 +166,7 @@ author: Dominik Dary
           = preserve do
             :escaped
               /* When using SelendroidDriver */
-              driver.getKeyboard().sendKeys(SelendroidKeys.MENU);
+              new Actions(driver).sendKeys(SelendroidKeys.MENU).perform();
       %h4 Python:
       %pre
         %code.python
