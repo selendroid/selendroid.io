@@ -45,7 +45,7 @@ author: Dominik Dary
             java -jar selendroid-standalone-#{site.current_version}-with-dependencies.jar -app selendroid-test-app-#{site.current_version}.apk
         %p Selendroid-standalone will start a http server on port 5555 and will scan all Android virtual devices (avd) that the user has created (~/.android/avd/). The Android target version and the screen size will be identified. If an emulator is running, it will be ignored. If there are Android hardware devices plugged in, they will also be added to the device store.
         %p You can check that the application(s) and the devices are recognized by opening a browser and navigating to: <a href="http://localhost:4444/wd/hub/status">http://localhost:4444/wd/hub/status</a>.
-        %p You should see a result similiar to this:
+        %p You should see a result similar to this:
         %pre
           %code.json
             = preserve do
@@ -134,7 +134,7 @@ author: Dominik Dary
                 inputField.sendKeys("Selendroid");
                 Assert.assertEquals("Selendroid", inputField.getText());
                 driver.quit();
-        %p If, for example, you prefer to write your tests in Python, the same test can be found <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/python/FindElementTest.py">here</a>.</p>
+        %p If, for example, you prefer to write your tests in Python, the same test can be found <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/python/FindElementTest.py">here</a>. and <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/ruby/>here</a> in Ruby</p>
         %p In order to create a new test session in the desired capabilities, the id of the app under test must be provided in the format: <code>io.selendroid.testapp:#{site.current_version}</code>. Based on that information a matching Android device will be identified, otherwise the test session will throw an error and not start. Important: before filing a bug: please make sure the desired capabilities in your test match the <a href="http://localhost:5555/wd/hub/status">supported</a> apps and devices available.
         %p After the found device has been initialized, a customized <em>selendroid-server</em> will be created and automatically installed on the device. The app under test will also be installed and the <em>selendroid-server</em> on the device will then be automatically started.
         %p After the test session has been successfully initialized, the test commands such as 'find an element' and 'element interactions' are routed to this device. If the test session has ended, the emulator will stop automatically.
