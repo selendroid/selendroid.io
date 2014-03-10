@@ -188,7 +188,16 @@ author: Dominik Dary
             Specify a list of adb commands that will be executed on the target device before <em>selendroid-server</em> will be started. E.g. <code>shell setprop name selendroid</code>, please note that the adb command itself and the serial will be added by selendroid automatically.
       %section#androidDevices
         %h2 Devices
-        %p Selendroid supports testing on hardware devices as well as using Android emulators.
+        %p Selendroid supports testing on hardware devices as well as using Android emulators. In the capabilities the properties are used to find the device for the test execution. The supported properties in the capabilities are listed <a href="#DesiredCapabilities">here</a>. 
+        %h3 Example for selecting a device
+        %p For running a test on the Android target platform 18 and on an emulator the capabilities are for the selendroid-test-app:
+        %pre
+          %code.java
+            = preserve do
+              :escaped
+                SelendroidCapabilities capa = new SelendroidCapabilities("io.selendroid.testapp:0.8.0");
+                capa.setAndroidTarget(DeviceTargetPlatform.ANDROID18.name());
+                capa.setEmulator(true);
         %h3 Using Emulators
         %p Selendroid can start and stop Android Virtual Devices (Avd). It cannot create new emulators, they must be created manually by the tester. After an emulator has been created, we recommend the first start be done manually in order to be sure everything works as expected. 
         %p When creating avds, please read the following configuration recommendations:

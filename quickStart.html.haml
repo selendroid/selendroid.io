@@ -29,7 +29,7 @@ author: Dominik Dary
       %p To get started please <a href="#{site.setup_page}#systemRequirements">setup first your system</a> and if you want to use an emulator during test, please checkout <a href="#{site.setup_page}#androidDevices">this section</a>.
 
       %h2#withMaven Use Selendroid with Maven
-      %p The demo project is based on <a href="http://maven.apache.org/">Apache Maven</a> and uses <a href="http://testng.org/">TestNG</a> to run the tests.
+      %p The demo project is based on <a href="http://maven.apache.org/">Apache Maven</a> and uses <a href="http://junit.org/">JUnit 4</a> to run the tests.
 
       %p Selendroid is available in Maven central can be added in the dependency section of the <code>pom.xml</code>:
       %pre
@@ -141,7 +141,7 @@ author: Dominik Dary
           = preserve do
             :escaped
       %script
-        $.getGithubFile("selendroid", "demoproject-selendroid", "ad8e143d09cca3a962c75e1ef36eebb80decbc1c", function(contents) {$('#hybridCode').html(contents);},14);
+        $.getGithubFile("selendroid", "demoproject-selendroid", "f901c7825028fcc7ba4613021f809e03f48b559b", function(contents) {$('#hybridCode').html(contents);},14);
 
       %h2#mobileWebTest Testing the mobile Web
       %p Selendroid supports with version 0.7.0 testing the mobile web. The sample project contains a <a href="http://goo.gl/2iLiKj">MobileWebTest</a> example:
