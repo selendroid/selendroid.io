@@ -253,7 +253,10 @@
             </section>
             <section id="androidDevices">
               <h2>Devices</h2>
-              <p>Selendroid supports testing on hardware devices as well as using Android emulators.</p>
+              <p>Selendroid supports testing on hardware devices as well as using Android emulators. In the capabilities the properties are used to find the device for the test execution. The supported properties in the capabilities are listed <a href="#DesiredCapabilities">here</a>.</p>
+              <h3>Example for selecting a device</h3>
+              <p>For running a test on the Android target platform 18 and on an emulator the capabilities are for the selendroid-test-app:</p>
+              <pre><code class="java">SelendroidCapabilities capa = new SelendroidCapabilities(&quot;io.selendroid.testapp:0.8.0&quot;);&#x000A;capa.setAndroidTarget(DeviceTargetPlatform.ANDROID18.name());&#x000A;capa.setEmulator(true);</code></pre>
               <h3>Using Emulators</h3>
               <p>Selendroid can start and stop Android Virtual Devices (Avd). It cannot create new emulators, they must be created manually by the tester. After an emulator has been created, we recommend the first start be done manually in order to be sure everything works as expected.</p>
               <p>When creating avds, please read the following configuration recommendations:</p>

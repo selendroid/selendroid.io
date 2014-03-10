@@ -108,7 +108,7 @@
             <h2 id="beforeStart">Before you start</h2>
             <p>To get started please <a href="setup.html#systemRequirements">setup first your system</a> and if you want to use an emulator during test, please checkout <a href="setup.html#androidDevices">this section</a>.</p>
             <h2 id="withMaven">Use Selendroid with Maven</h2>
-            <p>The demo project is based on <a href="http://maven.apache.org/">Apache Maven</a> and uses <a href="http://testng.org/">TestNG</a> to run the tests.</p>
+            <p>The demo project is based on <a href="http://maven.apache.org/">Apache Maven</a> and uses <a href="http://junit.org/">JUnit 4</a> to run the tests.</p>
             <p>Selendroid is available in Maven central can be added in the dependency section of the <code>pom.xml</code>:</p>
             <pre><code class="xml">&lt;dependency&gt;&#x000A;    &lt;groupId&gt;io.selendroid&lt;/groupId&gt;&#x000A;    &lt;version&gt;0.8.0&lt;/version&gt;&#x000A;    &lt;artifactId&gt;selendroid-standalone&lt;/artifactId&gt;&#x000A;&lt;/dependency&gt;&#x000A;&lt;dependency&gt;&#x000A;    &lt;groupId&gt;io.selendroid&lt;/groupId&gt;&#x000A;    &lt;version&gt;0.8.0&lt;/version&gt;&#x000A;    &lt;artifactId&gt;selendroid-client&lt;/artifactId&gt;&#x000A;&lt;/dependency&gt;</code></pre>
             <p>Before starting <code>SelendroidDriver</code> it is mandatory to start the <code>SelendroidStandalone</code>-server. This can be done by</p>
@@ -144,7 +144,7 @@
             <p>Selendroid can be used to test hybrid applications. The project contains a <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/resources/employee-directory.apk">Cordova sample app</a> and the <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/java/io/selendroid/demo/webui/EmployeeDirectoryTest.java">EmployeeDirectoryTest</a>:</p>
             <pre><code class="java" id="hybridCode"></code></pre>
             <script>
-              $.getGithubFile("selendroid", "demoproject-selendroid", "ad8e143d09cca3a962c75e1ef36eebb80decbc1c", function(contents) {$('#hybridCode').html(contents);},14);
+              $.getGithubFile("selendroid", "demoproject-selendroid", "f901c7825028fcc7ba4613021f809e03f48b559b", function(contents) {$('#hybridCode').html(contents);},14);
             </script>
             <h2 id="mobileWebTest">Testing the mobile Web</h2>
             <p>Selendroid supports with version 0.7.0 testing the mobile web. The sample project contains a <a href="http://goo.gl/2iLiKj">MobileWebTest</a> example:</p>
