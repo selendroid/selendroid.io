@@ -3,6 +3,7 @@ org: ebay Software Fondation
 ebay_software_foundation_page: http://ebayopensource.github.io/
 encoding: UTF-8
 current_version: 0.9.0
+snasphot_version: 0.10.0-SNAPSHOT
 latest_selenium_version: 2.40.0
 selendroid_maven_search_link: http://search.maven.org/#search|ga|1|selendroid
 standalone_download_link: https://github.com/selendroid/selendroid/releases/download/0.9.0/selendroid-standalone-0.9.0-with-dependencies.jar
