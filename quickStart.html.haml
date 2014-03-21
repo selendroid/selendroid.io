@@ -31,7 +31,8 @@ author: Dominik Dary
       %h2#withMaven Use Selendroid with Maven
       %p The demo project is based on <a href="http://maven.apache.org/">Apache Maven</a> and uses <a href="http://junit.org/">JUnit 4</a> to run the tests.
 
-      %p Selendroid is available in Maven central can be added in the dependency section of the <code>pom.xml</code>:
+      %h3 Maven Central (Stable Version)
+      %p Selendroid is available in Maven central can be added in the <em>dependencies</em> section of the <code>pom.xml</code>:
       %pre
         %code.xml
           = preserve do
@@ -46,6 +47,39 @@ author: Dominik Dary
                   <version>#{site.current_version}</version>
                   <artifactId>selendroid-client</artifactId>
               </dependency>
+      %h3 Latest Snapshot version
+      %p Selendroid latest development version is available in  a Maven snapshot repo. For using the latest version, please add in the <em>dependencies</em> section of the <code>pom.xml</code>:
+      %pre
+        %code.xml
+          = preserve do
+            :escaped
+              <dependency>
+                  <groupId>io.selendroid</groupId>
+                  <version>#{site.snasphot_version}</version>
+                  <artifactId>selendroid-standalone</artifactId>
+              </dependency>
+              <dependency>
+                  <groupId>io.selendroid</groupId>
+                  <version>#{site.snasphot_version}</version>
+                  <artifactId>selendroid-client</artifactId>
+              </dependency>
+      %p Please add as well in the <em>repositories</em> section of the <code>pom.xml</code> the following repository:
+      %pre
+        %code.xml
+          = preserve do
+            :escaped
+               <repository>
+                    <id>snapshot</id>
+                    <name>snapshot repository</name>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                    <layout>default</layout>
+                    <snapshots>
+                            <enabled>true</enabled>
+                    </snapshots>
+                    <releases>
+                            <enabled>false</enabled>
+                    </releases>
+               </repository>
 
       %p Before starting <code>SelendroidDriver</code> it is mandatory to start the <code>SelendroidStandalone</code>-server. This can be done by
       %ul
@@ -125,13 +159,13 @@ author: Dominik Dary
 
       %h2#nativeAppTest Native App Test
 
-      %p Selendroid's <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/resources/selendroid-test-app-0.5.1.apk">test app</a> contains an user registration flow that will be tested in the <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/java/io/selendroid/demo/nativeui/UserRegistrationTest.java">UserRegistrationTest</a>:
+      %p Selendroid's <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/resources/selendroid-test-app-0.9.0.apk">test app</a> contains an user registration flow that will be tested in the <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/java/io/selendroid/demo/nativeui/UserRegistrationTest.java">UserRegistrationTest</a>:
       %pre
         %code#nativeCode.java
           = preserve do
             :escaped
       %script
-        $.getGithubFile("selendroid", "demoproject-selendroid", "607373753eeb5200057938aa4a3f55036f9c2991", function(contents) {$('#nativeCode').html(contents);},14);
+        $.getGithubFile("selendroid", "demoproject-selendroid", "461779eef28f4c8f09ffbc8ff6aa4a0c1c531106", function(contents) {$('#nativeCode').html(contents);},14);
       %p The test demonstrates how activities can be started and how the interaction with different elements can be done.
 
       %h2#hybridAppTest Hybrid App Test
@@ -159,4 +193,4 @@ author: Dominik Dary
           = preserve do
             :escaped
       %script
-        $.getGithubFile("selendroid", "demoproject-selendroid", "879ade8e167a802da5752fcfe3ea531bc4944d1e", function(contents) {$('#pythonSampleCode').html(contents);},4);
+        $.getGithubFile("selendroid", "demoproject-selendroid", "59ea343562ae63d9f358d31f1a1628b484f150da", function(contents) {$('#pythonSampleCode').html(contents);},4);
