@@ -17,6 +17,10 @@ author: Dominik Dary
           %li
             %a{:href=>'#q-does-selendroid-creates-and-starts-automatically-emulators-for-you'} Does selendroid creates and starts automatically emulators for you?
           %li
+            %a{:href=>'#q-how-can-i-solve-resigning-issues'} How can I solve resigning issues?
+          %li
+            %a{:href=>'#q-what-are-the-drawbacks-of-using-the-locale-property-in-the-capabilities'} What are the drawbacks of using the locale property in the capabilities?
+          %li
             %a{:href=>'#q-how-do-you-test-that-actually-selendroid-works-fine'} How do you test that actually selendroid works fine?
           %li
             %a{:href=>'#q-how-can-i-chat-with-the-developers'} How can I chat with the developers?
@@ -33,9 +37,14 @@ author: Dominik Dary
       %h3#q-can-selendroid-automate-hybrid-apps-web-views Q: Can selendroid automate hybrid apps (web views)?
       %p A: Yes, selendroid can automate native and hybrid apps.
       %h3#q-does-selendroid-creates-and-starts-automatically-emulators-for-you Q: Does selendroid creates and starts automatically emulators for you?
-      %p A: Yes, when using you use selendroid-standalone then existing emulators are started automatically if the desired capabilities are matching to one of the existing Emulators.
+      %p A: Yes, when using you use selendroid-standalone then existing emulators are started automatically if the desired capabilities are matching to one of the existing Emulators. Since version 0.9.0 selendroid can also interact with already started emulators.
+      %h3#q-how-can-i-solve-resigning-issues Q: How can I solve resigning issues?
+      %p A: Usually resigning issues are caused when the <em>JAVA_HOME</em> is pointing to an Java Runtime Environment (JRE) instead of a Java Software Development Kit (SDK). When a IDE is used to start <em>selendroid-standalone</em>, please have a look at your test runner. In some cases the IDE pointed to a JRE and which caused the failure.  
+      %h3#q-what-are-the-drawbacks-of-using-the-locale-property-in-the-capabilities Q: What are the drawbacks of using the locale property in the capabilities?
+      %p A: When selendroid is starting emulators, for that test session the locale can be changed. If already started emulators are used, the locale cannot be changed, because that would cause an emulator restart, which wouldn't make sense to use already started emulators in the first place. On hardware devices the locale cannot be changed programmatically. 
+      %p When you have multiple devices connected to a node with multiple locales and you are using the selenium grid, then you can add the locale property to the registration request that the <em>grid-node</em> is sending to the <em>grid-hub</em> and write your own <a target="_blank", href="https://github.com/selendroid/selendroid/blob/master/selendroid-grid-plugin/src/main/java/io/selendroid/grid/SelendroidCapabilityMatcher.java#L30">CapabilityMatcher</a> that considers the locale property. More details about how to used the Grid you find <a href="https://code.google.com/p/selenium/wiki/Grid2" target="_blank">here</a>.
       %h3#q-how-do-you-test-that-actually-selendroid-works-fine Q: How do you test that actually selendroid works fine?
-      %p >A: We are maintaining a special test app with a bunch of automated tests. Those tests are executed before we release and also every time a commit is done. We use Jenkins as a continuous integration server: <a href="http://ci.selendroid.io">ci.selendroid.io</a>.
+      %p >A: We are maintaining a special test app with a bunch of automated tests. Those tests are executed before we release and also every time a commit is done. We use Travis CI: <a href="https://travis-ci.org/selendroid/selendroid">https://travis-ci.org/selendroid/selendroid</a>.
       %h3#q-how-can-i-chat-with-the-developers Q: How can I chat with the developers?
       %p A: Come and join us on IRC: #selendroid on freenode.net
       %h3#q-how-can-i-get-the-html-source-of-the-webview Q: How can I get the HTML source of the webview?

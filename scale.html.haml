@@ -33,7 +33,7 @@ author: Dominik Dary
         %code.bash
           = preserve do
             :escaped
-              java -jar selendroid-standalone-#{site.current_version}-with-dependencies.jar -app selendroid-test-app-#{site.current_version}.apk
+              java -jar selendroid-standalone-#{site.current_version}-with-dependencies.jar -app selendroid-test-app-#{site.current_version}.apk -port 5555
       %p Now you can start the Grid with the <code>selendroid-grid-plugin</code> that contains the proxy <code>io.selendroid.grid.SelendroidSessionProxy</code> and a simple capability matcher <code>io.selendroid.grid.SelendroidCapabilityMatcher</code>.
       %p Command to start the server on <em>Mac</em> & <em>Unix:</em>
       %pre
@@ -57,7 +57,6 @@ author: Dominik Dary
                 "capabilities": [{
                     "browserName": "selendroid",
                     "maxInstances": 1,
-                    "locale": "en_GB",
                     "aut": "io.selendroid.testapp:#{site.current_version}"
                 }, {
                     "browserName": "android",
@@ -91,7 +90,6 @@ author: Dominik Dary
                 SelendroidCapabilities capa =
                     new SelendroidCapabilities(
                         "io.selendroid.testapp:#{site.current_version}");
-                capa.setLocale("en_GB");
                 WebDriver driver = new SelendroidDriver(capa);
                 driver.findElement(By.id("startUserRegistration")).click();
 
