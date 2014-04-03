@@ -13,6 +13,8 @@ author: Dominik Dary
           %li
             %a{:href=>'#ruby'} Ruby Example
           %li
+            %a{:href=>'#python'} Python Example
+          %li
             %a{:href=>'#java'} Java Example
     .span9
       %h1 Mobile Gestures
@@ -38,6 +40,19 @@ author: Dominik Dary
               #include Selenium::WebDriver::DriverExtensions::HasTouchScreen
               pages = driver.find_element(:id,'vp_pages')
               driver.touch.flick(pages,-100,0,:normal).perform
+
+      %h3#python Python:
+      %pre
+        %code.python
+          = preserve do
+            :escaped
+              #import
+              from selenium import webdriver
+              from selenium.webdriver.common.touch_actions import TouchActions
+              # Gestures code
+              pages = driver.find_element_by_id("vp_pages")
+              touch_actions = TouchActions(driver)              
+              touch_actions.flick_element(pages,0,-100,0).perform()
       %h3#java Java:
       %pre
         %code.java
