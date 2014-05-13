@@ -116,7 +116,7 @@
             </ul>
             <p>Below you can see an overview about the architecture:</p></p>
             <img src="https://docs.google.com/drawings/d/1Mo1YWUBgDNzcIBSq8EuyBjNhgpQk-3F91lEt9_43ueQ/pub?w=772&amp;h=298">
-            <p>The <em>selendroid-standalone-0.8.0.jar</em> contains the standalone-server, selendroid-server and the selendroid-client driver.</p>
+            <p>The <em>selendroid-standalone-0.10.0.jar</em> contains the standalone-server, selendroid-server and the selendroid-client driver.</p>
             <p>Selendroid-server is the main component responsible for the app automation.</p>
             <h2 id="selendroidServer">Selendroid-Server</h2>
             <p>The central driver class is <code>DefaultSelendroidDriver</code>. This class is responsible for doing the common activities (like taking screenshots) for both contexts <code>NATIVE_APP</code> and <code>WEBVIEW</code>.</p>
@@ -141,15 +141,15 @@
             <ul>
               <li>Clone the project</li>
               <li>Build it via <code>mvn clean install</code></li>
-              <li>Install the server via <code>adb install -r selendroid-server/target/selendroid-server-0.8.0.apk</code></li>
-              <li>Install the test app via <code>adb install -r selendroid-test-app/target/selendroid-test-app-0.8.0.apk</code></li>
+              <li>Install the server via <code>adb install -r selendroid-server/target/selendroid-server-0.10.0.apk</code></li>
+              <li>Install the test app via <code>adb install -r selendroid-test-app/target/selendroid-test-app-0.10.0.apk</code></li>
               <li>Start the selendroid-server that starts the test app: <pre><code>adb shell am instrument -e main_activity 'io.selendroid.testapp.HomeScreenActivity' io.selendroid/.ServerInstrumentation</code></pre></li>
               <li>Do the port forwarding: <code>adb forward tcp:8080 tcp:8080</code></li>
               <li><code>cd selendroid-test-app</code></li>
               <li>Run the tests by <code>mvn install -DskipTests=false</code></li>
             </ul>
             <h2 id="ci">CI Infrastructure</h2>
-            <p>We use a dedicated jenkins server for building selendroid: <a href="http://ci.selendroid.io">http://ci.selendroid.io</a>.</p>
+            <p>We use travis-ci for building selendroid: <a href="https://travis-ci.org/selendroid/selendroid">https://travis-ci.org/selendroid/selendroid</a>.</p>
             <h2 id="contribute">Contributing code</h2>
             <p>If you want to contribute to Selendroid, please fork the project and create pull requests. We will then evaluate the code and whether the contribution is suitable for merging into the main project. Please make sure that your code is formatted according to the <a href="http://code.google.com/p/google-styleguide/">Google Styleguide</a>.</p></p>
             <p><strong>[IMPORTANT]</strong> We are only able to merge code into the code base, if you as a contributor have signed the <a href="http://goo.gl/pAvxEI">Contributor License Agreement (CLA)</a>.</p>
