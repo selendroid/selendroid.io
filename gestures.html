@@ -87,9 +87,6 @@
                   <a href="#ruby">Ruby Example</a>
                 </li>
                 <li>
-                  <a href="#python">Python Example</a>
-                </li>
-                <li>
                   <a href="#java">Java Example</a>
                 </li>
               </ul>
@@ -113,8 +110,6 @@
             <p>How to swipe from right to left</p>
             <h3 id="ruby">Ruby:</h3>
             <pre><code class="ruby">#Please include the touch screen:&#x000A;#include Selenium::WebDriver::DriverExtensions::HasTouchScreen&#x000A;pages = driver.find_element(:id,'vp_pages')&#x000A;driver.touch.flick(pages,-100,0,:normal).perform</code></pre>
-            <h3 id="python">Python:</h3>
-            <pre><code class="python">#import&#x000A;from selenium import webdriver&#x000A;from selenium.webdriver.common.touch_actions import TouchActions&#x000A;# Gestures code&#x000A;pages = driver.find_element_by_id(&quot;vp_pages&quot;)&#x000A;touch_actions = TouchActions(driver)              &#x000A;touch_actions.flick_element(pages,0,-100,0).perform()</code></pre>
             <h3 id="java">Java:</h3>
             <pre><code class="java">#Please import: org.openqa.selenium.interactions.touch.TouchActions&#x000A;WebElement pages = driver.findElement(By.id(&quot;vp_pages&quot;));&#x000A;TouchActions flick = new TouchActions(driver).flick(pages, -100, 0, 0);&#x000A;flick.perform();</code></pre>
           </div>
