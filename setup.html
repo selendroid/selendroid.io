@@ -118,11 +118,11 @@
             <section id="getAut">
               <h2>Getting an application under test</h2>
               <p>Selendroid can be used to test already built apps. Those Android apps (apk file) must exist on the machine, where the <em>selendroid-standalone</em> server will be started. The reason for this is that a customized <em>selendroid-server</em> for the app under test (AUT) will be created. Both apps (selendroid-server and AUT) must be signed with the same certificate in order to install the apks on the device.</p>
-              <p>If you want to play around with selendroid, you can use our <em>selendroid-test-app</em> which we use to verify that actually selendroid works as expected. You can download this app <a href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-test-app/0.10.0/selendroid-test-app-0.10.0.apk">here</a>.</p>
+              <p>If you want to play around with selendroid, you can use our <em>selendroid-test-app</em> which we use to verify that actually selendroid works as expected. You can download this app <a href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-test-app/0.11.0/selendroid-test-app-0.11.0.apk">here</a>.</p>
             </section>
             <section id="launchingSelendroid">
               <h2>Launching Selendroid</h2>
-              <p>Download <a href="https://github.com/selendroid/selendroid/releases/download/0.10.0/selendroid-standalone-0.10.0-with-dependencies.jar">selendroid-standalone.jar</a> and <em>cd</em> to the folder where you downloaded the jar, and run:</p>
+              <p>Download <a href="https://github.com/selendroid/selendroid/releases/download/0.11.0/selendroid-standalone-0.11.0-with-dependencies.jar">selendroid-standalone.jar</a> and <em>cd</em> to the folder where you downloaded the jar, and run:</p>
               <pre><code>java -jar selendroid-standalone-0.11.0-with-dependencies.jar -app selendroid-test-app-0.11.0.apk</code></pre>
               <p>Selendroid-standalone will start a http server on port 4444 and will scan all Android virtual devices (avd) that the user has created (~/.android/avd/). The Android target version and the screen size will be identified. If an emulator is running, it can be used since version <em>0.11.0</em>. Even an emulator that has been started manually after the selendroid-standalone got started can be used. If there are Android hardware devices plugged in, they will also be added to the device store.</p>
               <p>You can check that the application(s) and the devices are recognized by opening a browser and navigating to: <a href="http://localhost:4444/wd/hub/status">http://localhost:4444/wd/hub/status</a>.</p>
