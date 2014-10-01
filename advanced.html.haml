@@ -14,4 +14,46 @@ author: Dominik Dary
       %h1 Advanced Topics
       %p Selendroid can be used at enterprise scale.
       %h2#dynamicExtension Dynamic Extendability
-      %p look at: https://github.com/selendroid/selendroid-extension
+      %p Selendroid is hte first Mobile Test Automation framework that can be extended by the users with your own code at runtime! We provide the ability to implement your own request handler that extends  our <em>BaseRequestHandler</em>. We provide a full demo project that you can find at <a href="https://github.com/selendroid/selendroid-extension">Github</a>.
+      %h3#implementExtension Implement it:
+      %pre
+        %code.java
+          = preserve do
+            :escaped
+              package io.selendroid.extension;
+              import io.selendroid.server.http.HttpRequest;
+              import io.selendroid.server.BaseRequestHandler;
+              import io.selendroid.server.Response;
+              import io.selendroid.server.SelendroidResponse;
+              import org.json.JSONException;
+              public class DemoExtensionHandler extends BaseRequestHandler {
+                public DemoExtensionHandler(String mappedUri) {
+                  super(mappedUri);
+                }
+                @Override
+                public Response handle(HttpRequest request) throws JSONException {
+                  return new SelendroidResponse(getSessionId(request), "I'm an extension!");
+                }
+              }
+      %h3#buildIt Build it:
+      %pre
+        %code.java
+          = preserve do
+            :escaped
+              #!/bin/bash
+              mvn clean install
+              cd target
+              dx --dex --output=extension.dex extension-0.0.1-SNAPSHOT.jar
+      %h3#useIt Use it:
+      %pre
+        %code.java
+          = preserve do
+            :escaped
+              @Test
+              public void extensionCallShouldSucceed() {
+                SelendroidCapabilities capa = new SelendroidCapabilities("io.selendroid.testapp:1.0");
+                capa.setSelendroidExtensions(myExtension.dex)
+                WebDriver driver = new SelendroidDriver(capa);
+                assertEquals("I'm an extension!",
+                  driver().callExtension("io.selendroid.extension.DemoExtensionHandler"));
+              }

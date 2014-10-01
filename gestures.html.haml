@@ -16,6 +16,12 @@ author: Dominik Dary
             %a{:href=>'#python'} Python Example
           %li
             %a{:href=>'#java'} Java Example
+          %li
+            %a{:href=>'#multiTouch'} Multi Touch Support
+          %li
+            %a{:href=>'#singleFinger'} Single Finger Example
+          %li
+            %a{:href=>'#multiFinger'} Multi Finger Example
     .span9
       %h1 Mobile Gestures
       %p Selendroid is implementing the <a href="http://code.google.com/p/selenium/wiki/AdvancedUserInteractions">Advanced User Interactions API</a>. This is a new, more comprehensive API for describing actions a user can perform on an app. This includes actions such as drag and drop or clicking multiple elements while holding down the Control key.
@@ -62,3 +68,24 @@ author: Dominik Dary
               WebElement pages = driver.findElement(By.id("vp_pages"));
               TouchActions flick = new TouchActions(driver).flick(pages, -100, 0, 0);
               flick.perform();
+      %h2#multiTouch Multi Touch Support
+      %p The multi touch support is currently only in the Selendroid Java Client bindings available.
+      %h3#singleFinger Single Finger Example:
+      %pre
+        %code.java
+          = preserve do
+            :escaped
+              TouchAction ta = new TouchActionBuilder().pointerDown().
+              pointerMove(x, y).pointerUp().build(); 
+            driver.getMultiTouchScreen().executeAction(ta);
+      %h3#multiFinger Multi Finger Example (these will be executed in parallel):
+      %pre
+        %code.java
+          = preserve do
+            :escaped
+              TouchAction finger1 = new TouchActionBuilder().pointerDown().pause(100).
+                pointerMove(x, y).pointerUp().build(); 
+              TouchAction finger2 = new   TouchActionBuilder().pointerDown().pause(100).
+                pointerMove(x, y).pointerUp().build(); 
+              MultiTouchAction multiAction = new MultiTouchAction(finger1, finger2); 
+              driver.getMultiTouchScreen().executeAction(multiAction);

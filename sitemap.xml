@@ -56,6 +56,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>http://selendroid.io/advanced.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>http://selendroid.io/faq.html</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
