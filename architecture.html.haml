@@ -63,12 +63,7 @@ author: Dominik Dary
       %ul
         %li Clone the project
         %li Build it via <code>mvn clean install</code>
-        %li Install the server via <code>adb install -r selendroid-server/target/selendroid-server-#{site.current_version}.apk</code>
-        %li Install the test app via <code>adb install -r selendroid-test-app/target/selendroid-test-app-#{site.current_version}.apk</code>
-        %li Start the selendroid-server that starts the test app: <pre><code>adb shell am instrument -e main_activity 'io.selendroid.testapp.HomeScreenActivity' io.selendroid/.ServerInstrumentation</code></pre>
-        %li Do the port forwarding: <code>adb forward tcp:8080 tcp:8080</code>
-        %li <code>cd selendroid-test-app</code>
-        %li Run the tests by <code>mvn install -DskipTests=false</code>
+        %li Run the end-to-end tests by <code>./runEnd2EndTests.sh</code>
       %h2#ci CI Infrastructure
       %p We use travis-ci for building selendroid: <a href="https://travis-ci.org/selendroid/selendroid">https://travis-ci.org/selendroid/selendroid</a>.
       %h2#contribute Contributing code
