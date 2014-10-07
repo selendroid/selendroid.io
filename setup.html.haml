@@ -86,6 +86,11 @@ author: Dominik Dary
         %dl
           %dt
             :plain
+              -h, --help
+          %dd
+            Prints usage instructions to the terminal.
+          %dt
+            :plain
               -port
           %dd
             Specify the port for selendroid-standalone to run on, the default is 4444.
@@ -116,14 +121,29 @@ author: Dominik Dary
             Specify the port the selendroid-standalone is using to communicate with instrumentation server, default is 8080.
           %dt
             :plain
-              -verbose
+              -deviceLog
           %dd
-            This prints additional log statements making it easier to identify issues.
+            Specifies whether or not adb logging should be enabled for the device running the test.
+          %dt
+            :plain
+              -logLevel
+          %dd
+            Specifies the log level of selendroid. Available values are: ERROR, WARNING, INFO, DEBUG and VERBOSE. Default: ERROR
           %dt
             :plain
               -keystore
           %dd
             Specify the file of the keystore to use.
+          %dt
+            :plain
+              -keystoreAlias
+          %dd
+            The alias of the keystore to be used
+          %dt
+            :plain
+              -keystorePassword
+          %dd
+            The password for the keystore to be used
           %dt
             :plain
               -emulatorOptions
@@ -144,6 +164,11 @@ author: Dominik Dary
               -sessionTimeout
           %dd
             Specify the maximum session duration in seconds. Session will be forcefully terminated if it takes longer. Default is 30 minutes.
+          %dt
+            :plain
+              -serverStartTimeout
+          %dd
+            Maximum time in milliseconds to wait for the selendroid-server to come up on the device. Default: 20000
           %dt
             :plain
               -keepAdbAlive
