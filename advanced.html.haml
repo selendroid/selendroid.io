@@ -9,10 +9,38 @@ author: Dominik Dary
       #sidebar
         %ul.nav.nav-tabs.nav-stacked
           %li
+            %a{:href=>'#syntheticEvents'} Native events versus synthetic events
+          %li
             %a{:href=>'#dynamicExtension'} Dynamic Extendability
+          %li
+            %a{:href=>'#backgroundApp'} Background App Functionality
+          %li
+            %a{:href=>'#screenBrightness'} Screen Brightness
+          %li
+            %a{:href=>'#orientation'} Screen Orientation
+          %li
+            %a{:href=>'#adbConnection'} Adb Connection
     .span9
       %h1 Advanced Topics
-      %p Selendroid can be used at enterprise scale.
+      %p On this page we describe Selendroid advanced concepts.
+      %h2#syntheticEvents Native events versus synthetic events
+      %p In Selendroid are by default native events used. There are scenarios where the Android Instrumentation Framework has limitations with regards to simulating user input with different locales. Native events should be used whenever it is possible. But when specific locales are causing issues, Selendroid offers you to disable native events.
+      %h3#implementExtension Example: Use Synthetic events for native UIs
+      %pre
+        %code.java
+          = preserve do
+            :escaped
+              @Test
+              public void shouldSetJapaneseTextIntoNativeTextField() {
+                //Initialize your Selendroid Driver and navigate to your main Activity
+                Configuration configurable = (Configuration) driver();
+                configurable.setConfiguration(DriverCommand.SEND_KEYS_TO_ELEMENT, "nativeEvents", false);
+                String text = "ありがとう";
+                WebElement input = driver().findElement(By.id("my_text_field"));
+                input.sendKeys(text);
+                Assert.assertEquals(text, input.getText());
+              }
+      %p This mechanism can be used for native UI and WebView elements. A <a href="https://github.com/selendroid/selendroid/blob/master/selendroid-test-app/src/test/java/io/selendroid/nativetests/CommandConfigurationTest.java#L56">full example</a> you can find in our Selendroid test suite.
       %h2#dynamicExtension Dynamic Extendability
       %p Selendroid is hte first Mobile Test Automation framework that can be extended by the users with your own code at runtime! We provide the ability to implement your own request handler that extends  our <em>BaseRequestHandler</em>. We provide a full demo project that you can find at <a href="https://github.com/selendroid/selendroid-extension">Github</a>.
       %h3#implementExtension Implement it:
@@ -57,3 +85,38 @@ author: Dominik Dary
                 assertEquals("I'm an extension!",
                   driver().callExtension("io.selendroid.extension.DemoExtensionHandler"));
               }
+      %h2#backgroundApp Background App Functionality
+      %p Selendroid offers you to put the app under test into the background and resume it later.
+      %pre
+        %code.java
+          = preserve do
+            :escaped
+              //put the app to the background
+              driver().backgroundApp();
+              //resume app
+              driver().resumeApp();
+      %h2#screenBrightness Screen Brightness
+      %p Selendroid offers you to control the brightness of the screen.
+      %pre
+        %code.java
+          = preserve do
+            :escaped
+              ScreenBrightness brightness = (ScreenBrightness) driver();
+              brightness.setBrightness(0);
+              brightness.setBrightness(50);
+              brightness.setBrightness(100);
+      %h2#orientation Screen Orientation
+      %p Selendroid offers you to control the orientation of the screen per activity.
+      %pre
+        %code.java
+          = preserve do
+            :escaped
+              driver().getOrientation();
+              driver().rotate(ScreenOrientation.LANDSCAPE);
+      %h2#adbConnection Adb Connection
+      %p Selendroid offers you to interact with the device via ADB. The benefit is that the limitations of the Android Instrumentation framework of testing only one Android process can be avoided.
+      %ul
+        %li <code>sendText(String text)</code>
+        %li <code>sendKeyEvent(int keyCode)</code>
+        %li <code>tap(int x, int y)</code>
+        %li <code>executeShellCommand(String command)</code>
