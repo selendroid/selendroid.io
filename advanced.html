@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>
+      Selendroid: Advanced Topics
+    </title>
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <meta content="Dominik Dary" name="author">
+    <link href="./stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <link href="./stylesheets/highlight-7.5.min.css" rel="stylesheet" type="text/css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="./javascripts/bootstrap-2.3.1.js" type="text/javascript"></script>
+    <script src="./javascripts/highlight-7.5.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="github-banner">
+            <a href="https://github.com/selendroid/selendroid">
+              <img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" style="position: absolute; top: 0; right: 0; border: 0;z-index: 900;">
+            </a>
+          </div>
+          <a class="brand" href="http://selendroid.io">Selendroid</a>
+          <ul class="nav">
+            <li>
+              <a href="setup.html">Getting Started</a>
+            </li>
+            <li class="dropdown" id="getting-started-menu">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#getting-started-menu">
+                Testing
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="quickStart.html">Quick Start</a>
+                </li>
+                <li>
+                  <a href="mobileWeb.html">Mobile Web</a>
+                </li>
+                <li>
+                  <a href="native.html">Native Apps</a>
+                </li>
+                <li>
+                  <a href="hybrid.html">Hybrid Apps</a>
+                </li>
+                <li>
+                  <a href="gestures.html">Gestures</a>
+                </li>
+                <li>
+                  <a href="advanced.html">Advanced Topics</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="inspector.html">Inspector</a>
+            </li>
+            <li>
+              <a href="scale.html">Scaling</a>
+            </li>
+            <li>
+              <a href="faq.html">FAQ</a>
+            </li>
+            <li>
+              <a href="architecture.html">Architecture</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span3">
+            <div id="sidebar">
+              <ul class="nav nav-tabs nav-stacked">
+                <li>
+                  <a href="#syntheticEvents">Native events versus synthetic events</a>
+                </li>
+                <li>
+                  <a href="#dynamicExtension">Dynamic Extendability</a>
+                </li>
+                <li>
+                  <a href="#backgroundApp">Background App Functionality</a>
+                </li>
+                <li>
+                  <a href="#screenBrightness">Screen Brightness</a>
+                </li>
+                <li>
+                  <a href="#orientation">Screen Orientation</a>
+                </li>
+                <li>
+                  <a href="#adbConnection">Adb Connection</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="span9">
+            <h1>Advanced Topics</h1>
+            <p>On this page we describe Selendroid advanced concepts.</p>
+            <h2 id="syntheticEvents">Native events versus synthetic events</h2>
+            <p>In Selendroid are by default native events used. There are scenarios where the Android Instrumentation Framework has limitations with regards to simulating user input with different locales. Native events should be used whenever it is possible. But when specific locales are causing issues, Selendroid offers you to disable native events.</p>
+            <h3 id="implementExtension">Example: Use Synthetic events for native UIs</h3>
+            <pre><code class="java">@Test&#x000A;public void shouldSetJapaneseTextIntoNativeTextField() {&#x000A;  //Initialize your Selendroid Driver and navigate to your main Activity&#x000A;  Configuration configurable = (Configuration) driver();&#x000A;  configurable.setConfiguration(DriverCommand.SEND_KEYS_TO_ELEMENT, &quot;nativeEvents&quot;, false);&#x000A;  String text = &quot;ありがとう&quot;;&#x000A;  WebElement input = driver().findElement(By.id(&quot;my_text_field&quot;));&#x000A;  input.sendKeys(text);&#x000A;  Assert.assertEquals(text, input.getText());&#x000A;}</code></pre>
+            <p>This mechanism can be used for native UI and WebView elements. A <a href="https://github.com/selendroid/selendroid/blob/master/selendroid-test-app/src/test/java/io/selendroid/nativetests/CommandConfigurationTest.java#L56">full example</a> you can find in our Selendroid test suite.</p>
+            <h2 id="dynamicExtension">Dynamic Extendability</h2>
+            <p>Selendroid is hte first Mobile Test Automation framework that can be extended by the users with your own code at runtime! We provide the ability to implement your own request handler that extends  our <em>BaseRequestHandler</em>. We provide a full demo project that you can find at <a href="https://github.com/selendroid/selendroid-extension">Github</a>.</p>
+            <h3 id="implementExtension">Implement it:</h3>
+            <pre><code class="java">package io.selendroid.extension;&#x000A;import io.selendroid.server.http.HttpRequest;&#x000A;import io.selendroid.server.BaseRequestHandler;&#x000A;import io.selendroid.server.Response;&#x000A;import io.selendroid.server.SelendroidResponse;&#x000A;import org.json.JSONException;&#x000A;public class DemoExtensionHandler extends BaseRequestHandler {&#x000A;  public DemoExtensionHandler(String mappedUri) {&#x000A;    super(mappedUri);&#x000A;  }&#x000A;  @Override&#x000A;  public Response handle(HttpRequest request) throws JSONException {&#x000A;    return new SelendroidResponse(getSessionId(request), &quot;I'm an extension!&quot;);&#x000A;  }&#x000A;}</code></pre>
+            <h3 id="buildIt">Build it:</h3>
+            <pre><code class="java">#!/bin/bash&#x000A;mvn clean install&#x000A;cd target&#x000A;dx --dex --output=extension.dex extension-0.0.1-SNAPSHOT.jar</code></pre>
+            <h3 id="useIt">Use it:</h3>
+            <pre><code class="java">@Test&#x000A;public void extensionCallShouldSucceed() {&#x000A;  SelendroidCapabilities capa = new SelendroidCapabilities(&quot;io.selendroid.testapp:1.0&quot;);&#x000A;  capa.setSelendroidExtensions(myExtension.dex)&#x000A;  WebDriver driver = new SelendroidDriver(capa);&#x000A;  assertEquals(&quot;I'm an extension!&quot;,&#x000A;    driver().callExtension(&quot;io.selendroid.extension.DemoExtensionHandler&quot;));&#x000A;}</code></pre>
+            <h2 id="backgroundApp">Background App Functionality</h2>
+            <p>Selendroid offers you to put the app under test into the background and resume it later.</p>
+            <pre><code class="java">//put the app to the background&#x000A;driver().backgroundApp();&#x000A;//resume app&#x000A;driver().resumeApp();</code></pre>
+            <h2 id="screenBrightness">Screen Brightness</h2>
+            <p>Selendroid offers you to control the brightness of the screen.</p>
+            <pre><code class="java">ScreenBrightness brightness = (ScreenBrightness) driver();&#x000A;brightness.setBrightness(0);&#x000A;brightness.setBrightness(50);&#x000A;brightness.setBrightness(100);</code></pre>
+            <h2 id="orientation">Screen Orientation</h2>
+            <p>Selendroid offers you to control the orientation of the screen per activity.</p>
+            <pre><code class="java">driver().getOrientation();&#x000A;driver().rotate(ScreenOrientation.LANDSCAPE);</code></pre>
+            <h2 id="adbConnection">Adb Connection</h2>
+            <p>Selendroid offers you to interact with the device via ADB. The benefit is that the limitations of the Android Instrumentation framework of testing only one Android process can be avoided.</p>
+            <ul>
+              <li><code>sendText(String text)</code></li>
+              <li><code>sendKeyEvent(int keyCode)</code></li>
+              <li><code>tap(int x, int y)</code></li>
+              <li><code>executeShellCommand(String command)</code></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <ul class="breadcrumb">
+        <li>
+          &copy; 2012 - 2014
+          <a href="http://ebayopensource.github.io/"><img src="images/ebay-logo.png"> software foundation</a>
+          |
+        </li>
+        <li>
+          Maintained by
+          <i class="icon-user"></i>
+          <a href="https://github.com/selendroid/selendroid/blob/master/AUTHORS">Selendroid Authors</a>
+          |
+        </li>
+        <li>
+          <a href="http://groups.google.com/group/selendroid">Mailing List</a>
+          |
+        </li>
+        <li>
+          <a href="https://github.com/selendroid/selendroid/issues?direction=desc&amp;sort=updated&amp;state=open">Issue Tracker</a>
+        </li>
+      </ul>
+    </footer>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount','UA-1537443-9']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>

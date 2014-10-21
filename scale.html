@@ -56,6 +56,9 @@
                 <li>
                   <a href="gestures.html">Gestures</a>
                 </li>
+                <li>
+                  <a href="advanced.html">Advanced Topics</a>
+                </li>
               </ul>
             </li>
             <li>
@@ -99,33 +102,33 @@
             <ol>
               <li>Download selenium-server-standalone from the <a href="http://code.google.com/p/selenium/downloads/list">Selenium Project</a></li>
               <li>
-                <a href="https://github.com/selendroid/selendroid/releases/download/0.11.0/selendroid-standalone-0.11.0-with-dependencies.jar">Download selendroid-standalone</a>
+                <a href="https://github.com/selendroid/selendroid/releases/download/0.12.0/selendroid-standalone-0.12.0-with-dependencies.jar">Download selendroid-standalone</a>
               </li>
               <li>
-                <a href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-test-app/0.11.0/selendroid-test-app-0.11.0.apk">Download selendroid-test-app</a>
+                <a href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-test-app/0.12.0/selendroid-test-app-0.12.0.apk">Download selendroid-test-app</a>
               </li>
               <li>
-                <a href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-grid-plugin/0.11.0/selendroid-grid-plugin-0.11.0.jar">Download selendroid-grid-plugin</a>
+                <a href="http://search.maven.org/remotecontent?filepath=io/selendroid/selendroid-grid-plugin/0.12.0/selendroid-grid-plugin-0.12.0.jar">Download selendroid-grid-plugin</a>
               </li>
               <li>copy all the artifacts into the folder where the selenium-server-standalone is stored.</li>
             </ol>
             <h2 id="start">Start all servers</h2>
             <p>First, the selendroid-standalone should be started (more details you find <a href="setup.html#launchingSelendroid">here</a>):</p></p>
-            <pre><code class="bash">java -jar selendroid-standalone-0.11.0-with-dependencies.jar -app selendroid-test-app-0.11.0.apk -port 5555</code></pre>
+            <pre><code class="bash">java -jar selendroid-standalone-0.12.0-with-dependencies.jar -app selendroid-test-app-0.12.0.apk -port 5555</code></pre>
             <p>Now you can start the Grid with the <code>selendroid-grid-plugin</code> that contains the proxy <code>io.selendroid.grid.SelendroidSessionProxy</code> and a simple capability matcher <code>io.selendroid.grid.SelendroidCapabilityMatcher</code>.</p>
             <p>Command to start the server on <em>Mac</em> & <em>Unix:</em></p>
-            <pre><code class="bash">java -Dfile.encoding=UTF-8 -cp &quot;selendroid-grid-plugin-0.11.0.jar:selenium-server-standalone-2.42.2.jar&quot; org.openqa.grid.selenium.GridLauncher -capabilityMatcher io.selendroid.grid.SelendroidCapabilityMatcher -role hub -host 127.0.0.1 -port 4444</code></pre>
+            <pre><code class="bash">java -Dfile.encoding=UTF-8 -cp &quot;selendroid-grid-plugin-0.12.0.jar:selenium-server-standalone-2.43.1.jar&quot; org.openqa.grid.selenium.GridLauncher -capabilityMatcher io.selendroid.grid.SelendroidCapabilityMatcher -role hub -host 127.0.0.1 -port 4444</code></pre>
             <p>Command to start the server on <em>Windows</em>:</p>
-            <pre><code class="bash">java -Dfile.encoding=UTF-8 -cp &quot;selendroid-grid-plugin-0.11.0.jar;selenium-server-standalone-2.42.2.jar&quot; org.openqa.grid.selenium.GridLauncher -capabilityMatcher io.selendroid.grid.SelendroidCapabilityMatcher -role hub -host 127.0.0.1 -port 4444</code></pre>
+            <pre><code class="bash">java -Dfile.encoding=UTF-8 -cp &quot;selendroid-grid-plugin-0.12.0.jar;selenium-server-standalone-2.43.1.jar&quot; org.openqa.grid.selenium.GridLauncher -capabilityMatcher io.selendroid.grid.SelendroidCapabilityMatcher -role hub -host 127.0.0.1 -port 4444</code></pre>
             <p>Registering nodes to this grid can be done using this registration request (file name <code>selendroid-nodes-config.json</code>):</p>
-            <pre><code class="json">{&#x000A;  &quot;capabilities&quot;: [{&#x000A;      &quot;browserName&quot;: &quot;selendroid&quot;,&#x000A;      &quot;maxInstances&quot;: 1,&#x000A;      &quot;aut&quot;: &quot;io.selendroid.testapp:0.11.0&quot;&#x000A;  }, {&#x000A;      &quot;browserName&quot;: &quot;android&quot;,&#x000A;      &quot;maxInstances&quot;: 1&#x000A;  }],&#x000A;  &quot;configuration&quot;: {&#x000A;      &quot;maxSession&quot;: 1,&#x000A;      &quot;register&quot;: true,&#x000A;      &quot;hubHost&quot;: &quot;localhost&quot;,&#x000A;      &quot;hubPort&quot;: 4444,&#x000A;      &quot;remoteHost&quot;: &quot;http://localhost:5555&quot;,&#x000A;      &quot;proxy&quot;: &quot;io.selendroid.grid.SelendroidSessionProxy&quot;&#x000A;  }&#x000A;}</code></pre>
+            <pre><code class="json">{&#x000A;  &quot;capabilities&quot;: [{&#x000A;      &quot;browserName&quot;: &quot;selendroid&quot;,&#x000A;      &quot;maxInstances&quot;: 1,&#x000A;      &quot;aut&quot;: &quot;io.selendroid.testapp:0.12.0&quot;&#x000A;  }, {&#x000A;      &quot;browserName&quot;: &quot;android&quot;,&#x000A;      &quot;maxInstances&quot;: 1&#x000A;  }],&#x000A;  &quot;configuration&quot;: {&#x000A;      &quot;maxSession&quot;: 1,&#x000A;      &quot;register&quot;: true,&#x000A;      &quot;hubHost&quot;: &quot;localhost&quot;,&#x000A;      &quot;hubPort&quot;: 4444,&#x000A;      &quot;remoteHost&quot;: &quot;http://localhost:5555&quot;,&#x000A;      &quot;proxy&quot;: &quot;io.selendroid.grid.SelendroidSessionProxy&quot;&#x000A;  }&#x000A;}</code></pre>
             <p>This configuration describes in the section <em>capabilities</em> two browsers that are available on the node machine. The first one <em>selendroid</em> is able to run tests agains the app under test (aut) <em>io.selendroid.testapp</em>. The second one <em>android</em> can run mobile web tests. The important thing is not to mix both entries, otherwise forwarding the session to the selendroid-standalone will fail. You can find details about how capabilities are used in selendroid <a href="http://selendroid.io/setup.html#DesiredCapabilities">here</a>.</p>
             <p>The node registration can be done by sending the node config to the hub using <em>curl</em>:</p>
             <pre><code class="bash">curl -H &quot;Content-Type: application/json&quot; -X POST --data @selendroid-nodes-config.json http://localhost:4444/grid/register</code></pre>
             <p>Now you can verify in the <a href="http://localhost:4444/grid/console">Selenium Grid console</a>, that the node has been added to the grid hub.</p>
             <h2 id="runTests">Run a Test</h2>
             <p>When defining desired capabilities, please verify that they are present in the grid hub and they match to the capablities of the selendroid-standalone server. Otherwise you will get an error that the session could not be forwarded.</p>
-            <pre><code class="java">@Test()&#x000A;public void testShouldBeAbleToRegisterAnUser() throws Exception {&#x000A;  SelendroidCapabilities capa =&#x000A;      new SelendroidCapabilities(&#x000A;          &quot;io.selendroid.testapp:0.11.0&quot;);&#x000A;  WebDriver driver = new SelendroidDriver(capa);&#x000A;  driver.findElement(By.id(&quot;startUserRegistration&quot;)).click();&#x000A;&#x000A;  // Enter user name&#x000A;  WebElement username = driver.findElement(By.id(&quot;inputUsername&quot;));&#x000A;  username.sendKeys(&quot;johndoe&quot;);&#x000A;  driver.quit();&#x000A;}</code></pre>
+            <pre><code class="java">@Test()&#x000A;public void testShouldBeAbleToRegisterAnUser() throws Exception {&#x000A;  SelendroidCapabilities capa =&#x000A;      new SelendroidCapabilities(&#x000A;          &quot;io.selendroid.testapp:0.12.0&quot;);&#x000A;  WebDriver driver = new SelendroidDriver(capa);&#x000A;  driver.findElement(By.id(&quot;startUserRegistration&quot;)).click();&#x000A;&#x000A;  // Enter user name&#x000A;  WebElement username = driver.findElement(By.id(&quot;inputUsername&quot;));&#x000A;  username.sendKeys(&quot;johndoe&quot;);&#x000A;  driver.quit();&#x000A;}</code></pre>
           </div>
         </div>
       </div>
