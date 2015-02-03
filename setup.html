@@ -264,6 +264,12 @@
                 <dd>
                   Specify host of the node. Ip address needs to be specified for registering to a grid hub (guessing can be wrong complex).
                 </dd>
+                <dt>
+                  -folder
+                </dt>
+                <dd>
+                  Specify an absolute path of a folder that will be monitored for new apps (.apk files) to sign and add to the app store. Can be ignored if not needed.
+                </dd>
               </dl>
             </section>
             <section id="firstTest">
@@ -271,7 +277,7 @@
               <p>Tests are written using the Selenium 2 client API. For Java we provide <em>selendroid-client</em> libraries that are used in the following example:</p>
               <pre><code class="java">SelendroidCapabilities capa = new SelendroidCapabilities(&quot;io.selendroid.testapp:0.13.0&quot;);&#x000A;&#x000A;WebDriver driver = new SelendroidDriver(capa);&#x000A;WebElement inputField = driver.findElement(By.id(&quot;my_text_field&quot;));&#x000A;Assert.assertEquals(&quot;true&quot;, inputField.getAttribute(&quot;enabled&quot;));&#x000A;inputField.sendKeys(&quot;Selendroid&quot;);&#x000A;Assert.assertEquals(&quot;Selendroid&quot;, inputField.getText());&#x000A;driver.quit();</code></pre>
               <p>If, for example, you prefer to write your tests in Python, the same test can be found <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/python/FindElementTest.py">here</a>, and <a href="https://github.com/selendroid/demoproject-selendroid/blob/master/src/main/ruby/">here</a> in Ruby.</p>
-              <p>In order to create a new test session in the desired capabilities, the id of the app under test must be provided in the format: <code>io.selendroid.testapp:0.13.0</code>. Based on that information a matching Android device will be identified, otherwise the test session will throw an error and not start. Important: before filing a bug: please make sure the desired capabilities in your test match the <a href="http://localhost:4444/wd/hub/status">supported</a> apps and devices available.</p>
+              <p>In order to create a new test session in the desired capabilities, the id of the app under test must be provided in the format: <code>io.selendroid.testapp:0.13.0</code>. Please note, if the version is not specified in the id of the app under test then the latest version of the app will be automatically selected. Based on that information a matching Android device will be identified, otherwise the test session will throw an error and not start. Important: before filing a bug: please make sure the desired capabilities in your test match the <a href="http://localhost:4444/wd/hub/status">supported</a> apps and devices available.</p>
               <p>After the found device has been initialized, a customized <em>selendroid-server</em> will be created and automatically installed on the device. The app under test will also be installed and the <em>selendroid-server</em> on the device will then be automatically started.</p>
               <p>After the test session has been successfully initialized, the test commands such as 'find an element' and 'element interactions' are routed to this device. If the test session has ended, the emulator will stop automatically.</p>
               <h3 id="DesiredCapabilities">Desired Capabilities (SelendroidCapabilities)</h3>
@@ -290,7 +296,7 @@
                   aut
                 </dt>
                 <dd>
-                  Specify the app id of the app under test (aut). E.g.  <code>io.selendroid.testapp:0.13.0</code>
+                  Specify the app id of the app under test (aut). E.g.  <code>io.selendroid.testapp:0.13.0</code>. If the version of the aut is not specified, then the latest version is assumed.
                 </dd>
               </dl>
               <h5>For testing Mobile Web:</h5>
@@ -341,14 +347,20 @@
                 <dd>
                   Specify a list of adb commands that will be executed on the target device before <em>selendroid-server</em> will be started. E.g. <code>shell setprop name selendroid</code>, please note that the adb command itself and the serial will be added by selendroid automatically.
                 </dd>
+                <dt>
+                  model
+                </dt>
+                <dd>
+                  Specify the model (e.g. <code>Nexus One</code>, <code>Nexus 7</code>, <code>Galaxy S3</code>) of an emulator when selecting a device.
+                </dd>
               </dl>
             </section>
             <section id="androidDevices">
               <h2>Devices</h2>
               <p>Selendroid supports testing on hardware devices as well as using Android emulators. In the capabilities the properties are used to find the device for the test execution. The supported properties in the capabilities are listed <a href="#DesiredCapabilities">here</a>.</p>
               <h3>Example for selecting a device</h3>
-              <p>For running a test on the Android target platform 18 and on an emulator the capabilities are for the selendroid-test-app:</p>
-              <pre><code class="java">SelendroidCapabilities capa = new SelendroidCapabilities(&quot;io.selendroid.testapp:0.8.0&quot;);&#x000A;capa.setPlatformVersion(DeviceTargetPlatform.ANDROID18);&#x000A;capa.setEmulator(true);</code></pre>
+              <p>For running a test on the Android target platform 18 and on an emulator which is simulating a Nexus 7, the capabilities for the selendroid-test-app are:</p>
+              <pre><code class="java">SelendroidCapabilities capa = new SelendroidCapabilities(&quot;io.selendroid.testapp:0.8.0&quot;);&#x000A;capa.setPlatformVersion(DeviceTargetPlatform.ANDROID18);&#x000A;capa.setEmulator(true);&#x000A;capa.setModel(&quot;Nexus 7&quot;);</code></pre>
               <h3>Using Emulators</h3>
               <p>Selendroid can start and stop Android Virtual Devices (Avd). It cannot create new emulators, they must be created manually by the tester. After an emulator has been created, we recommend the first start be done manually in order to be sure everything works as expected.</p>
               <p>When creating avds, please read the following configuration recommendations:</p>
