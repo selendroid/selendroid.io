@@ -77,7 +77,7 @@ author: Dominik Dary
             :escaped
               TouchAction ta = new TouchActionBuilder().pointerDown().
               pointerMove(x, y).pointerUp().build(); 
-            driver.getMultiTouchScreen().executeAction(ta);
+              ta.perform(driver);
       %h3#multiFinger Multi Finger Example (these will be executed in parallel):
       %pre
         %code.java
@@ -88,4 +88,4 @@ author: Dominik Dary
               TouchAction finger2 = new   TouchActionBuilder().pointerDown().pause(100).
                 pointerMove(x, y).pointerUp().build(); 
               MultiTouchAction multiAction = new MultiTouchAction(finger1, finger2); 
-              driver.getMultiTouchScreen().executeAction(multiAction);
+              multiAction.perform(driver);
