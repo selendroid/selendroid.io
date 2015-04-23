@@ -129,7 +129,7 @@
             <p>Central driver class is <code>SelendroidStandaloneDriver</code> that acts as a proxy between the selendroid-client and the selendroid-server and starts e.g. an Android emulator, creates for the app under test a customized selendroid-server and installs everything on the device. After the session is initialized on the device, subsequent requests are directly forwarded to the server on the device and the response routed back to the client.</p>
             <h2 id="buildIt">How to build selendroid</h2>
             <p>For building Selendroid from scratch (only needed for commiters!) we use Maven 3.1.1 and you have to follow the following steps:</p>
-            <pre><code class="bash">git clone https://github.com/selendroid/selendroid.git&#x000A;cd selendroid/selendroid-server&#x000A;mvn package</code></pre>
+            <pre><code class="bash">git clone https://github.com/selendroid/selendroid.git&#x000A;cd selendroid/third-party/cordova-3.7.0&#x000A;# this is needed to install manually the cordova libs locally in your Maven repo&#x000A;./mvnInstall.sh&#x000A;cd ../../&#x000A;mvn package</code></pre>
             <p>You will then be able to get your version of the standalone-server in selendroid-standalone/target/</p>
             <h2 id="testIt">Testing Selendroid itself</h2>
             <p>To test selendroid there is a <a href="https://github.com/selendroid/selendroid/tree/master/selendroid-test-app">special app</a> that we use to verify that everything is working as expected. The end-to-end tests for this application are called large tests are are located <a href="https://github.com/selendroid/selendroid/tree/master/selendroid-test-app/src/test/java/io/selendroid">here</a>.</p>
@@ -151,7 +151,7 @@
             <h2 id="contribute">Contributing code</h2>
             <p>If you want to contribute to Selendroid, please fork the project and create pull requests. We will then evaluate the code and whether the contribution is suitable for merging into the main project. Please make sure that your code is formatted according to the <a href="http://code.google.com/p/google-styleguide/">Google Styleguide</a>.</p></p>
             <p><strong>[IMPORTANT]</strong> We are only able to merge code into the code base, if you as a contributor have signed the <a href="http://goo.gl/pAvxEI">Contributor License Agreement (CLA)</a>.</p>
-            <p>Debugging of the <em>selendroid-server</em> component is possible, please read the following <a href="http://code.google.com/p/maven-android-plugin/wiki/EclipseIntegration">instructions</a> to setup your IDE.</p>
+            <p>Debugging of the <em>selendroid-server</em> component is possible, please read the following <a href="https://code.google.com/p/maven-android-plugin/wiki/Debug">instructions</a> to setup your IDE.</p>
             <p>If you have questions about your contribution, please join us on IRC: #selendroid on <a href="http://freenode.net">freenode.net</a>.</p>
           </div>
         </div>

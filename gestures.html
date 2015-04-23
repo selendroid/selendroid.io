@@ -132,9 +132,9 @@
             <h2 id="multiTouch">Multi Touch Support</h2>
             <p>The multi touch support is currently only in the Selendroid Java Client bindings available.</p>
             <h3 id="singleFinger">Single Finger Example:</h3>
-            <pre><code class="java">TouchAction ta = new TouchActionBuilder().pointerDown().&#x000A;pointerMove(x, y).pointerUp().build();&#x000A;driver.getMultiTouchScreen().executeAction(ta);</code></pre>
+            <pre><code class="java">TouchAction ta = new TouchActionBuilder().pointerDown().&#x000A;pointerMove(x, y).pointerUp().build(); &#x000A;ta.perform(driver);</code></pre>
             <h3 id="multiFinger">Multi Finger Example (these will be executed in parallel):</h3>
-            <pre><code class="java">TouchAction finger1 = new TouchActionBuilder().pointerDown().pause(100).&#x000A;  pointerMove(x, y).pointerUp().build(); &#x000A;TouchAction finger2 = new   TouchActionBuilder().pointerDown().pause(100).&#x000A;  pointerMove(x, y).pointerUp().build(); &#x000A;MultiTouchAction multiAction = new MultiTouchAction(finger1, finger2); &#x000A;driver.getMultiTouchScreen().executeAction(multiAction);</code></pre>
+            <pre><code class="java">TouchAction finger1 = new TouchActionBuilder().pointerDown().pause(100).&#x000A;  pointerMove(x, y).pointerUp().build(); &#x000A;TouchAction finger2 = new   TouchActionBuilder().pointerDown().pause(100).&#x000A;  pointerMove(x, y).pointerUp().build(); &#x000A;MultiTouchAction multiAction = new MultiTouchAction(finger1, finger2); &#x000A;multiAction.perform(driver);</code></pre>
           </div>
         </div>
       </div>
