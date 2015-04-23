@@ -48,7 +48,10 @@ author: Dominik Dary
           = preserve do
             :escaped
               git clone https://github.com/selendroid/selendroid.git
-              cd selendroid/selendroid-server
+              cd selendroid/third-party/cordova-3.7.0
+              # this is needed to install manually the cordova libs locally in your Maven repo
+              ./mvnInstall.sh
+              cd ../../
               mvn package
       %p You will then be able to get your version of the standalone-server in selendroid-standalone/target/
       %h2#testIt Testing Selendroid itself
