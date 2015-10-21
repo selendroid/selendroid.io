@@ -1,9 +1,0 @@
-_site
-_tmp
-.sass-cache
-.awestruct
-vendor
-.idea/
-*.iml
-*.log
-.bundle
